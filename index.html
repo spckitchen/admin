@@ -27,11 +27,13 @@
     <!-- ADMIN LOGIN MODAL -->
     <div id="admin-login" class="fixed inset-0 bg-slate-900/90 z-[9999] flex items-center justify-center p-4 backdrop-blur-sm">
         <div class="bg-white p-8 rounded-[2rem] premium-shadow w-full max-w-sm text-center border border-slate-100 transform transition-all">
-            <div class="w-24 h-24 bg-[#fff5ec] text-[#ea580c] rounded-full flex items-center justify-center text-5xl mx-auto mb-6 shadow-inner border border-orange-100"><i class="fa-solid fa-fire-burner"></i></div>
-            <h2 class="text-3xl font-black mb-1 text-slate-900 tracking-tight">Sherpur <span class="text-[#ea580c]">Cloud</span> Kitchen</h2>
+            <div class="w-24 h-24 bg-[#fff5ec] rounded-full flex items-center justify-center text-5xl text-[#ea580c] shadow-inner border border-orange-100 mx-auto mb-6"><i class="fa-solid fa-fire-burner"></i></div>
+            <h2 class="text-[2.2rem] font-black leading-tight mb-2 tracking-tight">
+                <span class="text-slate-900">শেরপুর</span> <span class="text-[#ea580c]">ক্লাউড</span> <span class="text-slate-900">কিচেন</span>
+            </h2>
             <p class="text-sm font-bold text-slate-500 mb-8">অ্যাডমিন প্যানেলে প্রবেশ করুন</p>
             <input type="password" id="admin-pass" placeholder="পাসওয়ার্ড দিন..." class="w-full px-5 py-4 border-2 border-slate-100 rounded-2xl mb-6 outline-none focus:border-brand focus:ring-4 focus:ring-brand/10 font-bold text-center text-lg bg-slate-50 transition-all shadow-sm">
-            <button onclick="checkAdmin()" id="admin-login-btn" class="w-full bg-[#ea580c] text-white font-black py-4 rounded-2xl hover:bg-[#c2410c] transition-all shadow-lg hover:shadow-orange-500/30 text-lg uppercase tracking-wide">লগিন করুন <i class="fa-solid fa-arrow-right ml-2"></i></button>
+            <button onclick="checkAdmin()" id="admin-login-btn" class="w-full bg-slate-900 text-white font-black py-4 rounded-2xl hover:bg-[#ea580c] transition-all shadow-lg hover:shadow-orange-500/30 text-lg uppercase tracking-wide">লগিন করুন <i class="fa-solid fa-arrow-right ml-2"></i></button>
         </div>
     </div>
 
@@ -81,10 +83,7 @@
                         <h2 class="text-3xl font-black text-slate-800 tracking-tight">ড্যাশবোর্ড (আজকের দিন)</h2>
                         <p class="text-sm font-bold text-slate-500 mt-1">আপনার রেস্টুরেন্টের আজকের সার্বিক অবস্থা</p>
                     </div>
-                    
-                    <div class="flex items-center gap-2">
-                        <button onclick="fetchDashboardData()" class="bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-100 px-6 py-2.5 rounded-xl text-sm font-black shadow-sm transition-colors w-full sm:w-auto"><i class="fa-solid fa-rotate-right mr-1"></i> ডেটা রিফ্রেশ</button>
-                    </div>
+                    <button onclick="fetchDashboardData()" class="bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-100 px-6 py-2.5 rounded-xl text-sm font-black shadow-sm transition-colors w-full sm:w-auto"><i class="fa-solid fa-rotate-right mr-1"></i> ডেটা রিফ্রেশ</button>
                 </div>
                 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 mb-8">
@@ -101,7 +100,7 @@
                     <div class="w-8 h-8 rounded-lg bg-brand/10 text-brand flex items-center justify-center"><i class="fa-solid fa-clock-rotate-left"></i></div>
                     <h3 class="text-xl font-black text-slate-800 tracking-tight">সাম্প্রতিক অর্ডারসমূহ</h3>
                 </div>
-                <div class="space-y-5" id="recent-orders-list"></div>
+                <div class="grid grid-cols-1 gap-5" id="recent-orders-list"></div>
             </div>
 
             <!-- TAB: ALL ORDERS -->
@@ -111,9 +110,7 @@
                         <h2 class="text-3xl font-black text-slate-800 tracking-tight">সকল অর্ডার</h2>
                         <p class="text-sm font-bold text-slate-500 mt-1">অর্ডার ম্যানেজমেন্ট ও ফিল্টারিং</p>
                     </div>
-                    <div class="flex gap-2 sm:gap-3 items-center w-full md:w-auto">
-                        <button onclick="exportOrdersCSV()" class="flex-1 md:flex-none bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white px-6 py-3 rounded-xl text-sm font-black shadow-lg shadow-emerald-500/30 transition-all whitespace-nowrap"><i class="fa-solid fa-file-excel mr-1"></i> এক্সপোর্ট (CSV)</button>
-                    </div>
+                    <button onclick="exportOrdersCSV()" class="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white px-6 py-3 rounded-xl text-sm font-black shadow-lg shadow-emerald-500/30 transition-all whitespace-nowrap w-full md:w-auto"><i class="fa-solid fa-file-excel mr-1"></i> এক্সপোর্ট (CSV)</button>
                 </div>
                 
                 <div class="bg-white p-5 md:p-6 rounded-[1.5rem] border border-slate-100 premium-shadow mb-8">
@@ -144,7 +141,7 @@
                     </div>
                 </div>
 
-                <div id="all-orders-grid" class="grid grid-cols-1 gap-5"></div>
+                <div id="all-orders-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"></div>
             </div>
 
             <!-- TAB: MENU -->
@@ -203,7 +200,7 @@
                     </div>
                     <button onclick="exportCustomersCSV()" class="bg-gradient-to-r from-emerald-500 to-green-600 text-white px-5 py-2.5 rounded-xl text-sm font-black shadow-lg shadow-emerald-500/30 transition-all hover:-translate-y-0.5 w-full md:w-auto"><i class="fa-solid fa-file-excel mr-2"></i> এক্সপোর্ট (CSV)</button>
                 </div>
-                <div class="bg-white p-5 md:p-6 rounded-[1.5rem] premium-shadow border border-slate-100 mb-6">
+                <div class="bg-white p-5 rounded-[1.5rem] premium-shadow border border-slate-100 mb-6">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div class="relative md:col-span-2">
                             <i class="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
@@ -371,17 +368,17 @@
         </div>
     </div>
 
-    <!-- MENU MODAL -->
+    <!-- MENU MODAL (SCROLL FIX & POSTIMAGES) -->
     <div id="menu-modal" class="fixed inset-0 bg-slate-900/80 z-[9999] hidden items-center justify-center p-4 backdrop-blur-sm">
         <div class="bg-white rounded-[2rem] shadow-2xl w-full max-w-lg flex flex-col animate-[fadeIn_0.3s_ease-out] border border-slate-100 overflow-hidden max-h-[90vh]">
-            <div class="p-5 md:p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50 relative shrink-0"><div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand to-orange-400"></div><h2 id="menu-modal-title" class="text-xl font-black text-slate-800 tracking-tight">আইটেম যোগ করুন</h2><button onclick="closeMenuModal()" class="text-slate-400 hover:text-red-500 w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-50 transition-colors"><i class="fa-solid fa-times text-lg"></i></button></div>
+            <div class="p-5 border-b border-slate-100 flex justify-between items-center bg-slate-50 relative shrink-0"><div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand to-orange-400"></div><h2 id="menu-modal-title" class="text-xl font-black text-slate-800 tracking-tight">আইটেম যোগ করুন</h2><button onclick="closeMenuModal()" class="text-slate-400 hover:text-red-500 w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-50 transition-colors"><i class="fa-solid fa-times text-lg"></i></button></div>
             
-            <div class="flex-1 overflow-y-auto custom-scroll p-5 md:p-6">
+            <div class="flex-1 overflow-y-auto custom-scroll p-6 pb-20">
                 <form id="menu-form" onsubmit="saveMenuItem(event)" class="space-y-5">
                     <input type="hidden" id="m-id">
                     <div><label class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2 block pl-1">খাবারের নাম</label><input type="text" id="m-name" required placeholder="যেমন: কাচ্চি বিরিয়ানি" class="w-full px-5 py-3.5 border-2 border-slate-100 bg-slate-50 rounded-xl text-sm outline-none focus:border-brand focus:ring-4 focus:ring-brand/10 font-bold transition-all"></div>
                     
-                    <div class="grid grid-cols-2 gap-4 md:gap-5">
+                    <div class="grid grid-cols-2 gap-5">
                         <div><label class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2 block pl-1">দাম (৳)</label><input type="number" id="m-price" required placeholder="0" class="w-full px-5 py-3.5 border-2 border-slate-100 bg-slate-50 rounded-xl text-sm outline-none focus:border-brand focus:ring-4 focus:ring-brand/10 font-bold transition-all"></div>
                         <div>
                             <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2 block pl-1">ক্যাটাগরি</label>
@@ -400,11 +397,11 @@
                     
                     <div>
                         <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2 flex justify-between pl-1"><span>ছবির লিংক (URL)</span></label>
-                        <div class="flex flex-col sm:flex-row gap-2">
+                        <div class="flex gap-2">
                             <div class="relative flex-1"><i class="fa-solid fa-link absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i><input type="url" id="m-image" required placeholder="https://..." class="w-full pl-10 pr-4 py-3.5 border-2 border-slate-100 bg-slate-50 rounded-xl text-sm outline-none focus:border-brand focus:ring-4 focus:ring-brand/10 font-bold transition-all"></div>
-                            <button type="button" onclick="window.open('https://postimages.org/', '_blank')" class="bg-slate-800 text-white px-5 py-3.5 rounded-xl cursor-pointer text-sm font-black flex items-center justify-center hover:bg-black transition-colors shadow-md w-full sm:w-auto" title="Upload Image"><i class="fa-solid fa-cloud-arrow-up text-lg sm:mr-2"></i> <span class="hidden sm:inline">ছবি আপলোড সাইট</span></button>
+                            <button type="button" onclick="window.open('https://postimages.org/', '_blank')" class="bg-slate-800 text-white px-5 py-3.5 rounded-xl cursor-pointer text-sm font-black flex items-center justify-center hover:bg-black transition-colors shadow-md" title="Upload Image"><i class="fa-solid fa-cloud-arrow-up text-lg mr-2"></i> ছবি আপলোড সাইট</button>
                         </div>
-                        <p class="text-[10px] font-bold text-slate-500 mt-2 pl-1 bg-blue-50 p-2 rounded-lg border border-blue-100"><i class="fa-solid fa-circle-info mr-1 text-blue-500"></i> "ছবি আপলোড সাইট" বাটনে ক্লিক করে নতুন ট্যাবে ছবি আপলোড করুন, তারপর ডাইরেক্ট লিংক কপি করে বসান।</p>
+                        <p class="text-[10px] font-bold text-slate-500 mt-2 pl-1 bg-blue-50 p-2 rounded-lg border border-blue-100"><i class="fa-solid fa-circle-info mr-1 text-blue-500"></i> "ছবি আপলোড সাইট" বাটনে ক্লিক করে নতুন ট্যাবে ছবি আপলোড করুন, তারপর ডাইরেক্ট লিংক (Direct Link) কপি করে এখানে বসান।</p>
                     </div>
                     
                     <div class="grid grid-cols-1 gap-5">
@@ -412,31 +409,31 @@
                         <div class="col-span-1"><label class="text-[10px] font-black text-emerald-600 uppercase tracking-widest mb-2 flex items-center gap-1.5 pl-1"><i class="fa-solid fa-award text-lg"></i> কিনলে কত পয়েন্ট পাবে</label><input type="number" id="m-points" placeholder="যেমন: 10" class="w-full px-5 py-3.5 border-2 border-emerald-100 bg-emerald-50/50 rounded-xl text-sm outline-none focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 font-black text-emerald-700 transition-all"></div>
                     </div>
                     
-                    <button type="submit" class="w-full bg-gradient-to-r from-brand to-orange-500 hover:from-brand-dark hover:to-brand text-white font-black py-4 rounded-xl text-sm transition-all mt-2 shadow-lg shadow-brand/30 hover:shadow-brand/50 uppercase tracking-wide">সেভ করুন</button>
+                    <button type="submit" class="w-full bg-gradient-to-r from-brand to-orange-500 hover:from-brand-dark hover:to-brand text-white font-black py-4 rounded-xl text-sm transition-all mt-4 shadow-lg shadow-brand/30 hover:shadow-brand/50 uppercase tracking-wide">সেভ করুন</button>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- OFFER MODAL -->
+    <!-- OFFER MODAL (SCROLL FIX & POSTIMAGES) -->
     <div id="offer-modal" class="fixed inset-0 bg-slate-900/80 z-[9999] hidden items-center justify-center p-4 backdrop-blur-sm">
         <div class="bg-white rounded-[2rem] shadow-2xl w-full max-w-lg flex flex-col animate-[fadeIn_0.3s_ease-out] border border-slate-100 overflow-hidden max-h-[90vh]">
-            <div class="p-5 md:p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50 relative shrink-0"><div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-pink-500"></div><h2 id="offer-modal-title" class="text-xl font-black text-slate-800 tracking-tight">অফার ব্যানার যোগ করুন</h2><button onclick="closeOfferModal()" class="text-slate-400 hover:text-red-500 w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-50 transition-colors"><i class="fa-solid fa-times text-lg"></i></button></div>
+            <div class="p-5 border-b border-slate-100 flex justify-between items-center bg-slate-50 relative shrink-0"><div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-pink-500"></div><h2 id="offer-modal-title" class="text-xl font-black text-slate-800 tracking-tight">অফার যোগ করুন</h2><button onclick="closeOfferModal()" class="text-slate-400 hover:text-red-500 w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-50 transition-colors"><i class="fa-solid fa-times text-lg"></i></button></div>
             
-            <div class="flex-1 overflow-y-auto custom-scroll p-5 md:p-6">
+            <div class="flex-1 overflow-y-auto custom-scroll p-6 pb-20">
                 <form id="offer-form" onsubmit="saveOfferItem(event)" class="space-y-5">
                     <input type="hidden" id="o-id">
                     <div><label class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2 block pl-1">অফারের টাইটেল</label><input type="text" id="o-title" required class="w-full px-5 py-3.5 border-2 border-slate-100 bg-slate-50 rounded-xl text-sm outline-none focus:border-purple-400 focus:ring-4 focus:ring-purple-400/10 font-bold transition-all"></div>
                     <div><label class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2 block pl-1">দাম (৳)</label><input type="number" id="o-price" required class="w-full px-5 py-3.5 border-2 border-slate-100 bg-slate-50 rounded-xl text-sm outline-none focus:border-purple-400 focus:ring-4 focus:ring-purple-400/10 font-bold transition-all"></div>
                     <div>
                         <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2 flex justify-between pl-1"><span>ছবির লিংক (URL)</span></label>
-                        <div class="flex flex-col sm:flex-row gap-2">
+                        <div class="flex gap-2">
                             <div class="relative flex-1"><i class="fa-solid fa-link absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i><input type="url" id="o-image" required class="w-full pl-10 pr-4 py-3.5 border-2 border-slate-100 bg-slate-50 rounded-xl text-sm outline-none focus:border-purple-400 focus:ring-4 focus:ring-purple-400/10 font-bold transition-all"></div>
-                            <button type="button" onclick="window.open('https://postimages.org/', '_blank')" class="bg-slate-800 text-white px-5 py-3.5 rounded-xl cursor-pointer text-sm font-black flex items-center justify-center hover:bg-black transition-colors shadow-md w-full sm:w-auto"><i class="fa-solid fa-cloud-arrow-up text-lg sm:mr-2"></i> <span class="hidden sm:inline">আপলোড সাইট</span></button>
+                            <button type="button" onclick="window.open('https://postimages.org/', '_blank')" class="bg-slate-800 text-white px-5 py-3.5 rounded-xl cursor-pointer text-sm font-black flex items-center justify-center hover:bg-black transition-colors shadow-md"><i class="fa-solid fa-cloud-arrow-up text-lg mr-2"></i> আপলোড সাইট</button>
                         </div>
                     </div>
                     <div><label class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2 block pl-1">বিবরণ</label><textarea id="o-desc" required rows="3" class="w-full px-5 py-3.5 border-2 border-slate-100 bg-slate-50 rounded-xl text-sm outline-none focus:border-purple-400 focus:ring-4 focus:ring-purple-400/10 font-bold transition-all custom-scroll"></textarea></div>
-                    <button type="submit" class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-black py-4 rounded-xl text-sm transition-all mt-2 shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 uppercase tracking-wide">অফার সেভ করুন</button>
+                    <button type="submit" class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-black py-4 rounded-xl text-sm transition-all mt-4 shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 uppercase tracking-wide">অফার সেভ করুন</button>
                 </form>
             </div>
         </div>
@@ -480,6 +477,22 @@
         </div>
     </div>
     
+    <!-- ORDER DETAILS STATUS MODAL (For Estimated Time) -->
+    <div id="status-modal" class="fixed inset-0 bg-slate-900/80 z-[9999] hidden items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-[2rem] shadow-2xl w-full max-w-xs flex flex-col p-8 text-center border border-slate-100 animate-[fadeIn_0.2s_ease-out]">
+            <div class="w-20 h-20 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center text-4xl mx-auto mb-5 shadow-inner border border-blue-100"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            <h3 class="font-black text-2xl mb-2 text-slate-800 tracking-tight">অর্ডার আপডেট</h3>
+            <p class="text-xs text-slate-500 mb-6 font-bold bg-slate-50 p-2 rounded-lg">আনুমানিক ডেলিভারি সময় সেট করুন</p>
+            <input type="hidden" id="status-order-id">
+            <input type="hidden" id="status-val">
+            <input type="text" id="status-est-time" placeholder="যেমন: 40-50 mins" class="w-full px-5 py-4 border-2 border-slate-100 bg-slate-50 rounded-xl text-lg outline-none focus:border-brand focus:ring-4 focus:ring-brand/10 mb-6 font-black text-center transition-all">
+            <div class="flex gap-3">
+                <button onclick="document.getElementById('status-modal').style.display='none'" class="flex-1 bg-slate-100 text-slate-600 hover:bg-slate-200 py-3.5 rounded-xl font-black text-sm transition-colors border border-slate-200">বাতিল</button>
+                <button onclick="confirmStatusUpdate()" class="flex-1 bg-brand hover:bg-brand-dark text-white py-3.5 rounded-xl font-black text-sm shadow-lg shadow-brand/30 transition-all">কনফার্ম</button>
+            </div>
+        </div>
+    </div>
+
     <!-- TOAST -->
     <div id="toast" class="fixed top-5 md:top-8 left-1/2 transform -translate-x-1/2 text-white px-8 py-4 rounded-2xl shadow-2xl flex items-center justify-center gap-3 z-[10000] transition-all duration-400 opacity-0 -translate-y-10 pointer-events-none text-sm font-black tracking-wide border border-white/20 w-11/12 max-w-sm md:w-auto"></div>
 
@@ -492,13 +505,14 @@
         let activeAdminCategory = 'All';
         let adminNotifsList = [];
         
-        let isOrderTableView = false; 
+        let dbStartDate = null;
+        let dbEndDate = null;
         
         const fetchPost = async (data) => await fetch(scriptURL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) });
 
         function formatPhone(p) {
             let str = String(p).trim();
-            if(str.length === 10 && str.startsWith('1')) return '0' + str;
+            if(str.length === 10) return '0' + str;
             return str;
         }
 
@@ -545,7 +559,7 @@
         }
 
         function showLoading(show) { document.getElementById('loading-overlay').style.display = show ? 'flex' : 'none'; }
-        function showToast(msg, isError=false) { const toast = document.getElementById('toast'); toast.innerHTML = `${isError?'<i class="fa-solid fa-circle-exclamation"></i>':'<i class="fa-solid fa-circle-check"></i>'} ${msg}`; toast.className = `fixed top-5 md:top-8 left-1/2 transform -translate-x-1/2 text-white px-6 py-3 rounded-2xl shadow-2xl z-[10000] transition-all duration-400 opacity-100 translate-y-0 text-sm font-black tracking-wide border w-11/12 max-w-sm md:w-auto ${isError?'bg-red-600 border-red-500':'bg-slate-900 border-slate-700'}`; setTimeout(() => { toast.classList.remove('opacity-100', 'translate-y-0'); toast.classList.add('opacity-0', '-translate-y-10'); }, 3000); }
+        function showToast(msg, isError=false) { const toast = document.getElementById('toast'); toast.innerHTML = `${isError?'<i class="fa-solid fa-circle-exclamation"></i>':'<i class="fa-solid fa-circle-check"></i>'} ${msg}`; toast.className = `fixed top-5 md:top-8 left-1/2 transform -translate-x-1/2 text-white px-8 py-4 rounded-2xl shadow-2xl z-[10000] transition-all duration-400 opacity-100 translate-y-0 text-sm font-black tracking-wide border w-11/12 max-w-sm md:w-auto ${isError?'bg-red-600 border-red-500':'bg-slate-900 border-slate-700'}`; setTimeout(() => { toast.classList.remove('opacity-100', 'translate-y-0'); toast.classList.add('opacity-0', '-translate-y-10'); }, 3000); }
 
         function enableDragScroll() {
             setTimeout(() => {
@@ -592,6 +606,7 @@
             return itemTags;
         }
 
+        // --- DASHBOARD DATA & FILTERS ---
         function getSalesStats() {
             let todayOrders = 0, todaySales = 0, deliveredToday = 0, cancelledToday = 0; 
             const now = new Date();
@@ -709,6 +724,7 @@
             else {
                 todaysOrders.forEach(o => {
                     const isUnread = !viewedOrders.includes(o.id); if(isUnread) unreadCount++;
+                    const pPhone = formatPhone(o.phone);
                     html += `
                     <div class="p-4 bg-white rounded-2xl border transition-all ${isUnread ? 'border-l-4 border-l-brand premium-shadow' : 'border-slate-100 shadow-sm'}">
                         <div class="flex justify-between items-start mb-3 border-b border-slate-50 pb-2 cursor-pointer" onclick="viewOrderFromNotif('${o.id}')">
@@ -720,7 +736,7 @@
                         </div>
                         <div class="flex justify-between items-center mb-3">
                             <p class="text-xs font-black text-slate-800 flex items-center cursor-pointer" onclick="viewOrderFromNotif('${o.id}')"><i class="fa-solid fa-user text-slate-400 mr-2"></i> ${o.name || 'Guest'}</p>
-                            <button onclick="openNotifModal('${formatPhone(o.phone)}')" class="text-[9px] bg-blue-50 text-blue-600 border border-blue-100 px-2 py-1 rounded shadow-sm font-black hover:bg-blue-100"><i class="fa-solid fa-paper-plane mr-1"></i> মেসেজ</button>
+                            <button onclick="openNotifModal('${pPhone}')" class="text-[9px] bg-blue-50 text-blue-600 border border-blue-100 px-2 py-1 rounded shadow-sm font-black hover:bg-blue-100 transition-colors"><i class="fa-solid fa-paper-plane mr-1"></i> মেসেজ</button>
                         </div>
                         
                         <div class="text-[10px] text-slate-600 bg-slate-50 p-2 rounded-xl border border-slate-100 cursor-pointer hover:bg-slate-100 transition-colors" onclick="let el = this.querySelector('.order-text'); el.classList.toggle('line-clamp-2');" title="বিস্তারিত দেখতে ক্লিক করুন">
@@ -801,6 +817,145 @@
             } catch(e) { console.error('Dashboard render error:', e); }
         }
 
+        // শেয়ার করা কম্প্যাক্ট অর্ডার কার্ড টেমপ্লেট
+        function buildOrderCardHTML(o) {
+            const ratingNum = Math.max(0, parseInt(o.rating) || 0);
+            const pPhone = formatPhone(o.phone);
+            const cInfo = customerMap[pPhone]; let tagHtml = '';
+            
+            if(cInfo && cInfo.tag === 'Good') tagHtml = '<span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-md text-[9px] font-black border border-emerald-200 ml-1 shadow-sm uppercase"><i class="fa-solid fa-star text-[8px] mr-0.5"></i>Good</span>';
+            else if(cInfo && cInfo.tag === 'Bad') tagHtml = '<span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-md text-[9px] font-black border border-red-200 ml-1 shadow-sm uppercase"><i class="fa-solid fa-thumbs-down text-[8px] mr-0.5"></i>Bad</span>';
+            else if(cInfo && cInfo.tag === 'Regular') tagHtml = '<span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-md text-[9px] font-black border border-blue-200 ml-1 shadow-sm uppercase"><i class="fa-solid fa-award text-[8px] mr-0.5"></i>Reg</span>';
+            
+            let borderLeftClass = "border-l-4 border-l-orange-400";
+            if(o.status === 'খাবার তৈরি হচ্ছে') borderLeftClass = "border-l-4 border-l-blue-400";
+            else if(o.status === 'ডেলিভারি ম্যান পথে আছে') borderLeftClass = "border-l-4 border-l-indigo-400";
+            else if(o.status === 'সম্পূর্ণ হয়েছে' || o.status === 'ডেলিভারি সম্পন্ন হয়েছে') borderLeftClass = "border-l-4 border-l-emerald-400";
+            else if(String(o.status||'').includes('বাতিল')) borderLeftClass = "border-l-4 border-l-red-400";
+
+            return `
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm mb-4 relative overflow-hidden ${borderLeftClass} hover:shadow-md transition-shadow flex flex-col">
+                <div class="bg-slate-50 border-b border-slate-100 px-4 py-2.5 flex justify-between items-center">
+                    <div class="flex items-center gap-2">
+                        <span class="font-black text-slate-800 text-xs">#${o.id}</span>
+                        <span class="text-[10px] text-slate-500 font-bold bg-white px-2 py-0.5 rounded border border-slate-200"><i class="fa-regular fa-clock text-blue-400 mr-1"></i> ${formatEnglishDate(o.time)}</span>
+                    </div>
+                    <span class="text-[9px] px-2 py-1 rounded border font-black uppercase tracking-widest ${getStatusClass(o.status)}">${String(o.status||'').includes('বাতিল') ? 'বাতিল' : o.status}</span>
+                </div>
+                
+                <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex flex-col justify-center">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-user text-slate-400 text-xs w-4"></i>
+                            <span class="text-sm font-black text-slate-700">${o.name || 'Guest'}</span>
+                            ${tagHtml}
+                            <button onclick="openNotifModal('${pPhone}')" class="bg-blue-50 text-blue-600 border border-blue-100 px-2 py-1 rounded text-[10px] font-black shadow-sm ml-auto hover:bg-blue-100 transition-colors"><i class="fa-solid fa-paper-plane mr-1"></i> মেসেজ</button>
+                        </div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-phone text-slate-400 text-xs w-4"></i>
+                            <a href="tel:${pPhone}" class="text-xs font-bold text-blue-600 hover:underline">${pPhone}</a>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-slate-400 text-xs mt-0.5 w-4"></i>
+                            <span class="text-[11px] font-bold text-slate-600 leading-tight">${o.address || 'ঠিকানা নেই'}</span>
+                        </div>
+                        ${ ratingNum > 0 ? `<div class="mt-3 bg-yellow-50/50 p-2 rounded-lg border border-yellow-100 text-[10px] font-bold text-slate-700"><div class="text-yellow-500 text-xs mb-1">${'<i class="fa-solid fa-star"></i>'.repeat(ratingNum)}</div>"${o.review || ''}"</div>` : '' }
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-orange-50/50 to-slate-50/50 border border-orange-100/50 rounded-xl p-3 text-xs text-slate-700 shadow-sm relative overflow-hidden flex flex-col justify-center">
+                        <div class="absolute left-0 top-0 w-1 h-full bg-brand/40"></div>
+                        <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1.5 block">অর্ডারকৃত খাবার:</span>
+                        <div class="leading-relaxed">${formatOrderDetails(o.details)}</div>
+                    </div>
+                </div>
+                
+                <div class="bg-slate-50/80 border-t border-slate-100 p-3 flex flex-wrap gap-4 justify-between items-center">
+                    <div class="flex items-center gap-2">
+                        <span class="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center shadow-sm"><i class="fa-solid ${String(o.payment||'').includes('Online')?'fa-building-columns text-indigo-400':'fa-money-bill text-emerald-400'}"></i></span>
+                        <div>
+                            <p class="text-[9px] font-black text-slate-500 uppercase tracking-widest leading-none">মোট বিল (${o.payment||'N/A'})</p>
+                            <p class="text-lg font-black text-brand leading-tight mt-0.5">৳ ${Number(o.total||0).toLocaleString('en-US')}</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 w-full sm:w-auto mt-1 sm:mt-0">
+                        <div class="w-full sm:w-48">
+                            ${getStatusDropdown(o.id, o.status)}
+                        </div>
+                        <button onclick="deleteOrder('${o.id}')" class="bg-white border border-red-200 text-red-500 hover:bg-red-50 px-3 rounded-xl shadow-sm transition-colors shrink-0" title="ডিলিট করুন">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>`;
+        }
+
+        function getStatusDropdown(id, currentStatus) {
+            const statuses = ['পেন্ডিং', 'খাবার তৈরি হচ্ছে', 'ডেলিভারি ম্যান পথে আছে', 'সম্পূর্ণ হয়েছে', 'বাতিল'];
+            let mappedStatus = currentStatus || 'পেন্ডিং';
+            if(mappedStatus === 'Pending') mappedStatus = 'পেন্ডিং';
+            if(mappedStatus === 'Processing') mappedStatus = 'খাবার তৈরি হচ্ছে';
+            if(mappedStatus === 'On the way') mappedStatus = 'ডেলিভারি ম্যান পথে আছে';
+            if(mappedStatus === 'Delivered') mappedStatus = 'সম্পূর্ণ হয়েছে';
+            if(mappedStatus.includes('বাতিল') || mappedStatus === 'Cancelled') mappedStatus = 'বাতিল';
+
+            let options = statuses.map(s => `<option value="${s}" ${s === mappedStatus ? 'selected' : ''}>${s}</option>`).join('');
+            
+            let bgClass = "bg-orange-50 text-orange-800 border-orange-200 focus:ring-orange-200"; 
+            if(mappedStatus === 'খাবার তৈরি হচ্ছে') bgClass = "bg-blue-50 text-blue-800 border-blue-200 focus:ring-blue-200";
+            if(mappedStatus === 'ডেলিভারি ম্যান পথে আছে') bgClass = "bg-indigo-50 text-indigo-800 border-indigo-200 focus:ring-indigo-200";
+            if(mappedStatus === 'সম্পূর্ণ হয়েছে') bgClass = "bg-emerald-50 text-emerald-800 border-emerald-200 focus:ring-emerald-200";
+            if(mappedStatus === 'বাতিল') bgClass = "bg-red-50 text-red-800 border-red-200 focus:ring-red-200";
+
+            return `<div class="relative w-full">
+                        <select onchange="updateStatus('${id}', this.value)" class="w-full text-xs border-2 rounded-xl px-3 py-2 outline-none focus:ring-4 font-black transition-all cursor-pointer appearance-none shadow-sm ${bgClass}">
+                            ${options}
+                        </select>
+                        <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-[10px] pointer-events-none opacity-60"></i>
+                    </div>`;
+        }
+
+        function promptStatusUpdate(id) {
+            const o = allOrders.find(x => x.id === id); if(!o) return;
+            document.getElementById('status-order-id').value = id;
+            document.getElementById('status-val').value = o.status || 'পেন্ডিং';
+            document.getElementById('status-est-time').value = o.estimatedTime || '';
+            document.getElementById('status-modal').style.display = 'flex';
+        }
+        
+        async function updateStatus(id, newStatus) { 
+            document.getElementById('status-order-id').value = id; 
+            document.getElementById('status-val').value = newStatus;
+            confirmStatusUpdate();
+        }
+
+        async function confirmStatusUpdate() {
+            const id = document.getElementById('status-order-id').value;
+            const newStatus = document.getElementById('status-val').value;
+            const estTime = document.getElementById('status-est-time').value;
+            document.getElementById('status-modal').style.display = 'none';
+
+            showLoading(true); 
+            try { 
+                await fetchPost({ action: 'updateOrderStatus', orderId: id, status: newStatus, estimatedTime: estTime }); 
+                let o = allOrders.find(x=>x.id===id); if(o) { o.status=newStatus; o.estimatedTime=estTime; }
+                showToast("স্ট্যাটাস আপডেট সফল হয়েছে!"); 
+                renderDashboard(); renderOrders(); updateAdminNotifications();
+            } catch(e){ showToast("আপডেট ফেইলড", true); } 
+            showLoading(false); 
+        }
+
+        async function deleteOrder(id) {
+            if(!confirm("আপনি কি নিশ্চিত যে এই অর্ডারটি ডিলিট করতে চান? (এটি আর ফেরত পাওয়া যাবে না)")) return;
+            showLoading(true);
+            try {
+                await fetchPost({ action: 'deleteOrder', orderId: id });
+                allOrders = allOrders.filter(o => o.id !== id);
+                renderDashboard(); renderOrders(); updateAdminNotifications();
+                showToast("অর্ডার ডিলিট করা হয়েছে");
+            } catch(e) {}
+            showLoading(false);
+        }
+
         // --- ORDERS MANAGEMENT ---
         function renderOrders() {
             try {
@@ -845,131 +1000,6 @@
             if(statusStr==='আপনার অর্ডারটি বাতিল করা হয়েছে' || statusStr.includes('বাতিল')) return 'text-red-700 bg-red-50 border-red-200'; 
             if(statusStr==='পেন্ডিং') return 'text-slate-700 bg-slate-100 border-slate-300'; 
             return 'text-orange-700 bg-orange-50 border-orange-200'; 
-        }
-
-        // শেয়ার করা কম্প্যাক্ট অর্ডার কার্ড টেমপ্লেট
-        function buildOrderCardHTML(o) {
-            const ratingNum = Math.max(0, parseInt(o.rating) || 0);
-            const pPhone = formatPhone(o.phone);
-            const cInfo = customerMap[pPhone]; let tagHtml = '';
-            
-            if(cInfo && cInfo.tag === 'Good') tagHtml = '<span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-md text-[9px] font-black border border-emerald-200 ml-1 shadow-sm uppercase"><i class="fa-solid fa-star text-[8px] mr-0.5"></i>Good</span>';
-            else if(cInfo && cInfo.tag === 'Bad') tagHtml = '<span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-md text-[9px] font-black border border-red-200 ml-1 shadow-sm uppercase"><i class="fa-solid fa-thumbs-down text-[8px] mr-0.5"></i>Bad</span>';
-            else if(cInfo && cInfo.tag === 'Regular') tagHtml = '<span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-md text-[9px] font-black border border-blue-200 ml-1 shadow-sm uppercase"><i class="fa-solid fa-award text-[8px] mr-0.5"></i>Reg</span>';
-            
-            let borderLeftClass = "border-l-4 border-l-orange-400";
-            if(o.status === 'খাবার তৈরি হচ্ছে') borderLeftClass = "border-l-4 border-l-blue-400";
-            else if(o.status === 'ডেলিভারি ম্যান পথে আছে') borderLeftClass = "border-l-4 border-l-indigo-400";
-            else if(o.status === 'সম্পূর্ণ হয়েছে' || o.status === 'ডেলিভারি সম্পন্ন হয়েছে') borderLeftClass = "border-l-4 border-l-emerald-400";
-            else if(String(o.status||'').includes('বাতিল')) borderLeftClass = "border-l-4 border-l-red-400";
-
-            return `
-            <div class="bg-white rounded-[1.2rem] border border-slate-200 shadow-sm mb-4 relative overflow-hidden ${borderLeftClass} hover:shadow-md transition-shadow flex flex-col">
-                <div class="bg-slate-50 border-b border-slate-100 px-4 py-3 flex justify-between items-center shrink-0">
-                    <div class="flex items-center gap-3">
-                        <span class="font-black text-slate-800 text-sm bg-white border border-slate-200 px-2.5 py-1 rounded-lg shadow-sm">#${o.id}</span>
-                        <span class="text-[10px] text-slate-500 font-bold"><i class="fa-regular fa-clock text-blue-400 mr-1"></i> ${formatEnglishDate(o.time)}</span>
-                    </div>
-                    <span class="text-[9px] px-2.5 py-1 rounded-md border font-black shadow-sm uppercase tracking-widest ${getStatusClass(o.status)}">${String(o.status||'').includes('বাতিল') ? 'বাতিল' : o.status}</span>
-                </div>
-                
-                <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4 flex-1">
-                    <div class="flex flex-col justify-center">
-                        <div class="flex items-center gap-2 mb-1.5">
-                            <i class="fa-solid fa-user text-slate-400 text-xs w-4"></i>
-                            <span class="text-sm font-black text-slate-700">${o.name || 'Guest'}</span>
-                            ${tagHtml}
-                            <button onclick="openNotifModal('${pPhone}')" class="bg-blue-50 border border-blue-100 text-blue-600 px-2 py-0.5 rounded text-[10px] font-black hover:bg-blue-100 transition-colors ml-auto shadow-sm"><i class="fa-solid fa-paper-plane mr-1"></i> মেসেজ</button>
-                        </div>
-                        <div class="flex items-center gap-2 mb-1.5">
-                            <i class="fa-solid fa-phone text-slate-400 text-xs w-4"></i>
-                            <a href="tel:${pPhone}" class="text-xs font-bold text-blue-600 hover:underline">${pPhone}</a>
-                        </div>
-                        <div class="flex items-start gap-2">
-                            <i class="fa-solid fa-location-dot text-slate-400 text-xs mt-0.5 w-4"></i>
-                            <span class="text-[11px] font-bold text-slate-600 leading-tight">${o.address || 'ঠিকানা নেই'}</span>
-                        </div>
-                        ${ ratingNum > 0 ? `<div class="mt-3 bg-yellow-50/50 p-2 rounded-lg border border-yellow-100 text-[10px] font-bold text-slate-700"><div class="text-yellow-500 text-xs mb-1">${'<i class="fa-solid fa-star"></i>'.repeat(ratingNum)}</div>"${o.review || ''}"</div>` : '' }
-                    </div>
-                    
-                    <div class="bg-gradient-to-r from-orange-50/50 to-slate-50/50 border border-orange-100/50 rounded-xl p-3 text-xs text-slate-700 shadow-sm relative overflow-hidden flex flex-col justify-center">
-                        <div class="absolute left-0 top-0 w-1 h-full bg-brand/40"></div>
-                        <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1.5 block">অর্ডারকৃত খাবার:</span>
-                        <div class="leading-relaxed">${formatOrderDetails(o.details)}</div>
-                    </div>
-                </div>
-                
-                <div class="bg-slate-50/80 border-t border-slate-100 p-4 flex flex-col md:flex-row gap-4 justify-between items-center shrink-0">
-                    <div class="flex flex-col items-center md:items-start shrink-0">
-                        <span class="text-[10px] font-black text-slate-500 uppercase tracking-widest flex items-center gap-1.5"><i class="fa-solid ${String(o.payment||'').includes('Online')?'fa-building-columns text-indigo-400':'fa-money-bill text-emerald-400'}"></i> বিল (${o.payment||'N/A'})</span>
-                        <span class="text-xl font-black text-brand">৳ ${Number(o.total||0).toLocaleString('en-US')}</span>
-                    </div>
-                    
-                    <div class="flex flex-wrap items-center gap-2 w-full md:w-auto mt-2 md:mt-0">
-                        <select id="inline-status-${o.id}" class="px-3 py-2 border-2 border-slate-200 rounded-lg text-xs font-black bg-white focus:border-brand outline-none flex-1 md:flex-none cursor-pointer text-slate-700">
-                            <option value="পেন্ডিং" ${o.status==='পেন্ডিং'?'selected':''}>পেন্ডিং</option>
-                            <option value="খাবার তৈরি হচ্ছে" ${o.status==='খাবার তৈরি হচ্ছে'?'selected':''}>খাবার তৈরি হচ্ছে</option>
-                            <option value="ডেলিভারি ম্যান পথে আছে" ${o.status==='ডেলিভারি ম্যান পথে আছে'?'selected':''}>ডেলিভারিতে</option>
-                            <option value="সম্পূর্ণ হয়েছে" ${o.status==='সম্পূর্ণ হয়েছে'?'selected':''}>সম্পূর্ণ</option>
-                            <option value="বাতিল" ${String(o.status||'').includes('বাতিল')?'selected':''}>বাতিল</option>
-                        </select>
-                        <input type="text" id="inline-est-${o.id}" value="${o.estimatedTime || ''}" placeholder="ডেলিভারি সময়" class="px-3 py-2 border-2 border-slate-200 rounded-lg text-xs font-bold bg-white focus:border-brand outline-none w-28 flex-1 md:flex-none" title="Estimated Time">
-                        
-                        <div class="flex gap-2 w-full md:w-auto">
-                            <button onclick="inlineUpdateStatus('${o.id}')" class="bg-brand text-white px-4 py-2 rounded-lg text-[11px] font-black shadow-sm hover:bg-brand-dark transition-colors flex-1 md:flex-none uppercase tracking-wide"><i class="fa-solid fa-check"></i> সেভ</button>
-                            <button onclick="deleteOrder('${o.id}')" class="bg-white border border-red-200 text-red-500 hover:bg-red-50 px-3 py-2 rounded-lg text-xs font-black shadow-sm transition-colors flex items-center justify-center shrink-0" title="ডিলিট করুন"><i class="fa-solid fa-trash"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>`;
-        }
-
-        async function inlineUpdateStatus(id) {
-            const newStatus = document.getElementById(`inline-status-${id}`).value;
-            const estTime = document.getElementById(`inline-est-${id}`).value;
-            showLoading(true);
-            try {
-                await fetchPost({ action: 'updateOrderStatus', orderId: id, status: newStatus, estimatedTime: estTime });
-                let o = allOrders.find(x=>x.id===id); if(o) { o.status=newStatus; o.estimatedTime=estTime; }
-                showToast("স্ট্যাটাস আপডেট সফল হয়েছে!");
-                renderDashboard(); renderOrders(); updateAdminNotifications();
-            } catch(e){ showToast("আপডেট ফেইলড", true); } 
-            showLoading(false);
-        }
-
-        async function deleteOrder(id) {
-            if(!confirm("আপনি কি নিশ্চিত যে এই অর্ডারটি ডিলিট করতে চান? (এটি আর ফেরত পাওয়া যাবে না)")) return;
-            showLoading(true);
-            try {
-                await fetchPost({ action: 'deleteOrder', orderId: id });
-                allOrders = allOrders.filter(o => o.id !== id);
-                renderDashboard(); renderOrders(); updateAdminNotifications();
-                showToast("অর্ডার ডিলিট করা হয়েছে");
-            } catch(e) {}
-            showLoading(false);
-        }
-
-        function downloadCSV(filename, text) {
-            const blob = new Blob(['\uFEFF' + text], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement("a"); const url = URL.createObjectURL(blob);
-            link.setAttribute("href", url); link.setAttribute("download", filename);
-            link.style.visibility = 'hidden'; document.body.appendChild(link); link.click(); document.body.removeChild(link);
-        }
-
-        function exportOrdersCSV() {
-            let csv = 'Order ID,Date,Name,Phone,Address,Items,Payment,Total,Status\n';
-            allOrders.forEach(o => {
-                let items = (o.details||'').replace(/,/g, ' | ').replace(/"/g, '""');
-                let addr = (o.address||'').replace(/,/g, ' - ').replace(/"/g, '""');
-                csv += `${o.id},${formatEnglishDate(o.time)},${o.name||'Guest'},${formatPhone(o.phone)},"${addr}","${items}",${o.payment||'N/A'},${o.total||0},${o.status}\n`;
-            });
-            downloadCSV('Orders_Report.csv', csv);
-        }
-
-        function exportCustomersCSV() {
-            let csv = 'Name,Phone,Tag,Points,Total Orders,Delivered,Total Spent\n';
-            for(let p in customerMap) { let c = customerMap[p]; csv += `${c.name||'Guest'},${p},${c.tag||'None'},${c.points||0},${c.totalOrders},${c.delivered},${c.spent}\n`; }
-            downloadCSV('Customers_Report.csv', csv);
         }
 
         // --- CUSTOMER PROFILE SYSTEM ---
@@ -1116,7 +1146,7 @@
                 await fetchPost({ action: 'deleteCustomer', phone: currentViewedPhone }); 
                 showToast("কাস্টমারের ডেটা মুছে ফেলা হয়েছে।"); 
                 closeCustomerModal(); 
-                await fetchDashboardData(); // No reload, fetch data directly
+                await fetchDashboardData(); 
             } catch(e){} 
             showLoading(false);
         }
@@ -1305,23 +1335,23 @@
                 if(data.result === 'success' && data.data && data.data.length > 0) {
                     adminNotifsList = data.data; 
                     list.innerHTML = adminNotifsList.map(n => `
-                        <div class="border border-slate-100 border-l-4 border-l-blue-500 rounded-[1.5rem] p-5 md:p-6 bg-white premium-shadow premium-shadow-hover transition-all relative overflow-hidden group">
-                            <div class="absolute right-0 top-0 w-24 h-24 bg-blue-50 rounded-bl-full -z-0 opacity-50 group-hover:scale-110 transition-transform"></div>
-                            <span class="absolute top-4 right-4 md:top-5 md:right-5 bg-white px-3 py-1.5 rounded-lg text-blue-600 border border-blue-100 text-[9px] font-black tracking-widest uppercase shadow-sm z-10"><i class="fa-solid fa-paper-plane mr-1"></i> ${n.target === 'All' ? 'সবাইকে' : n.target}</span>
+                        <div class="bg-white border border-slate-200 rounded-[1.2rem] p-5 shadow-sm hover:shadow-md transition-all relative overflow-hidden group">
+                            <div class="absolute left-0 top-0 w-1.5 h-full bg-blue-500"></div>
                             
-                            <div class="relative z-10 pr-20 mb-3">
-                                <h4 class="font-black text-lg text-slate-800 leading-tight">${n.title}</h4>
+                            <div class="flex justify-between items-start mb-3 border-b border-slate-50 pb-3">
+                                <h4 class="font-black text-lg text-slate-800 flex-1 pr-2">${n.title}</h4>
+                                <span class="bg-blue-50 text-blue-600 border border-blue-100 px-2.5 py-1 rounded-lg text-[9px] font-black uppercase tracking-widest shadow-sm shrink-0 whitespace-nowrap"><i class="fa-solid fa-paper-plane mr-1"></i> ${n.target === 'All' ? 'সবাইকে' : n.target}</span>
                             </div>
                             
-                            <div class="text-xs text-slate-600 mb-5 bg-gradient-to-r from-slate-50 to-white p-4 rounded-xl border border-slate-100 cursor-pointer shadow-sm relative z-10 hover:shadow-md transition-shadow" onclick="this.querySelector('p').classList.toggle('line-clamp-2');" title="Click to expand">
-                                <p class="line-clamp-2 whitespace-pre-wrap leading-relaxed font-bold">${n.message}</p>
+                            <div class="text-sm text-slate-600 bg-slate-50 p-4 rounded-xl border border-slate-100 mb-4 font-bold leading-relaxed whitespace-pre-wrap">
+                                ${n.message}
                             </div>
 
-                            <div class="flex justify-between items-center pt-4 border-t border-slate-50 relative z-10">
-                                <span class="text-[10px] text-slate-400 font-bold bg-slate-50 px-2.5 py-1 rounded-md border border-slate-100"><i class="fa-regular fa-clock mr-1 text-blue-400"></i>${formatEnglishDate(n.date)}</span>
+                            <div class="flex justify-between items-center border-t border-slate-50 pt-3">
+                                <span class="text-[10px] text-slate-400 font-black bg-white"><i class="fa-regular fa-clock mr-1"></i>${formatEnglishDate(n.date)}</span>
                                 <div class="flex gap-2">
-                                    <button onclick="editNotif('${n.id}')" class="text-[10px] text-blue-600 bg-blue-50 hover:bg-blue-100 border border-blue-100 px-3 py-1.5 rounded-lg font-black transition-all shadow-sm flex items-center justify-center uppercase"><i class="fa-solid fa-pen mr-1"></i> এডিট</button>
-                                    <button onclick="deleteNotification('${n.id}')" class="text-[10px] text-red-600 bg-red-50 hover:bg-red-100 border border-red-100 px-3 py-1.5 rounded-lg font-black transition-all shadow-sm flex items-center justify-center uppercase"><i class="fa-solid fa-trash mr-1"></i> ডিলিট</button>
+                                    <button onclick="editNotif('${n.id}')" class="text-[10px] bg-white border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-200 px-3 py-1.5 rounded-lg shadow-sm font-black transition-colors uppercase flex items-center"><i class="fa-solid fa-pen mr-1.5"></i> এডিট</button>
+                                    <button onclick="deleteNotification('${n.id}')" class="text-[10px] bg-white border border-slate-200 text-slate-600 hover:text-red-600 hover:border-red-200 px-3 py-1.5 rounded-lg shadow-sm font-black transition-colors uppercase flex items-center"><i class="fa-solid fa-trash mr-1.5"></i> ডিলিট</button>
                                 </div>
                             </div>
                         </div>
@@ -1415,8 +1445,16 @@
             // Set Default dates for "All Orders" (Yesterday to Today)
             const today = new Date();
             const yesterday = new Date(today); yesterday.setDate(yesterday.getDate() - 1);
-            document.getElementById('filter-order-date-to').value = formatEnglishDate(today, true);
-            document.getElementById('filter-order-date-from').value = formatEnglishDate(yesterday, true);
+            
+            const fmtDate = (d) => {
+                const y = d.getFullYear();
+                const m = String(d.getMonth() + 1).padStart(2, '0');
+                const dd = String(d.getDate()).padStart(2, '0');
+                return `${y}-${m}-${dd}`;
+            };
+            
+            document.getElementById('filter-order-date-to').value = fmtDate(today);
+            document.getElementById('filter-order-date-from').value = fmtDate(yesterday);
             
             fetchDashboardData(); 
         }
