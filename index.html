@@ -27,8 +27,8 @@
     <!-- ADMIN LOGIN MODAL -->
     <div id="admin-login" class="fixed inset-0 bg-slate-900/90 z-[9999] flex items-center justify-center p-4 backdrop-blur-sm">
         <div class="bg-white p-8 rounded-[2rem] premium-shadow w-full max-w-sm text-center border border-slate-100 transform transition-all">
-            <div class="w-24 h-24 bg-gradient-to-tr from-brand/20 to-orange-100 text-brand rounded-full flex items-center justify-center text-5xl mx-auto mb-6 shadow-inner"><i class="fa-solid fa-user-shield"></i></div>
-            <h2 class="text-3xl font-black mb-2 text-slate-800 tracking-tight">স্বাগতম!</h2>
+            <div class="w-24 h-24 bg-gradient-to-tr from-brand/20 to-orange-100 text-brand rounded-full flex items-center justify-center text-5xl mx-auto mb-6 shadow-inner"><i class="fa-solid fa-fire-burner"></i></div>
+            <h2 class="text-3xl font-black mb-2 text-slate-800 tracking-tight">Sherpur Cloud Kitchen</h2>
             <p class="text-sm font-bold text-slate-500 mb-8">অ্যাডমিন প্যানেলে প্রবেশ করুন</p>
             <input type="password" id="admin-pass" placeholder="পাসওয়ার্ড দিন..." class="w-full px-5 py-4 border-2 border-slate-100 rounded-2xl mb-6 outline-none focus:border-brand focus:ring-4 focus:ring-brand/10 font-bold text-center text-lg bg-slate-50 transition-all shadow-sm">
             <button onclick="checkAdmin()" id="admin-login-btn" class="w-full bg-slate-900 text-white font-black py-4 rounded-2xl hover:bg-brand transition-all shadow-lg hover:shadow-brand/30">লগিন করুন <i class="fa-solid fa-arrow-right ml-2"></i></button>
@@ -78,38 +78,20 @@
             <div id="tab-dashboard" class="tab-content active">
                 <div class="flex flex-col lg:flex-row justify-between lg:items-center gap-4 mb-8">
                     <div>
-                        <h2 class="text-3xl font-black text-slate-800 tracking-tight">ড্যাশবোর্ড</h2>
-                        <p class="text-sm font-bold text-slate-500 mt-1">আপনার রেস্টুরেন্টের সার্বিক অবস্থা</p>
+                        <h2 class="text-3xl font-black text-slate-800 tracking-tight">ড্যাশবোর্ড (আজকের দিন)</h2>
+                        <p class="text-sm font-bold text-slate-500 mt-1">আপনার রেস্টুরেন্টের আজকের সার্বিক অবস্থা</p>
                     </div>
                     
-                    <div class="flex flex-wrap items-center gap-2 bg-white p-2 rounded-2xl border border-slate-200 premium-shadow">
-                        <input type="date" id="db-start-date" class="px-3 py-2 border border-slate-100 bg-slate-50 rounded-xl text-xs font-bold text-slate-600 outline-none focus:border-brand transition-colors">
-                        <span class="text-slate-400 text-xs font-bold px-1">হতে</span>
-                        <input type="date" id="db-end-date" class="px-3 py-2 border border-slate-100 bg-slate-50 rounded-xl text-xs font-bold text-slate-600 outline-none focus:border-brand transition-colors">
-                        
-                        <div class="flex gap-1 ml-1 border-l border-slate-200 pl-2">
-                            <button onclick="setDbFilter('today')" class="bg-slate-50 hover:bg-slate-100 border border-slate-100 text-slate-700 px-3 py-2 rounded-xl text-[10px] font-black transition-colors shadow-sm">আজ</button>
-                            <button onclick="setDbFilter('7days')" class="bg-slate-50 hover:bg-slate-100 border border-slate-100 text-slate-700 px-3 py-2 rounded-xl text-[10px] font-black transition-colors shadow-sm">৭ দিন</button>
-                            <button onclick="setDbFilter('month')" class="bg-slate-50 hover:bg-slate-100 border border-slate-100 text-slate-700 px-3 py-2 rounded-xl text-[10px] font-black transition-colors shadow-sm">মাস</button>
-                        </div>
-                        
-                        <button onclick="applyDashboardFilter()" class="bg-slate-900 text-white hover:bg-brand px-5 py-2 rounded-xl text-xs font-black shadow-md transition-all ml-1 w-full sm:w-auto mt-2 sm:mt-0"><i class="fa-solid fa-filter mr-1"></i> ফিল্টার</button>
-                        <button onclick="fetchDashboardData()" class="bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-100 px-4 py-2 rounded-xl text-xs font-bold shadow-sm transition-colors w-full sm:w-auto mt-2 sm:mt-0"><i class="fa-solid fa-rotate-right"></i> রিফ্রেশ</button>
+                    <div class="flex items-center gap-2">
+                        <button onclick="fetchDashboardData()" class="bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-100 px-6 py-2.5 rounded-xl text-sm font-black shadow-sm transition-colors w-full sm:w-auto"><i class="fa-solid fa-rotate-right mr-1"></i> রিফ্রেশ করুন</button>
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-5 mb-8">
-                    <div class="bg-white p-5 md:p-6 rounded-[1.5rem] premium-shadow premium-shadow-hover transition-all relative overflow-hidden group"><div class="absolute right-0 top-0 w-1.5 h-full bg-indigo-500 group-hover:w-2 transition-all"></div><div class="w-10 h-10 rounded-full bg-indigo-50 text-indigo-500 flex items-center justify-center mb-3"><i class="fa-solid fa-box-open text-lg"></i></div><p class="text-slate-500 text-[10px] font-black mb-1 uppercase tracking-wider">ডেলিভারিকৃত অর্ডার</p><h3 id="stat-orders-today-count" class="text-2xl md:text-3xl font-black text-slate-800">0</h3></div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 mb-8">
+                    <div class="bg-white p-5 md:p-6 rounded-[1.5rem] premium-shadow premium-shadow-hover transition-all relative overflow-hidden group"><div class="absolute right-0 top-0 w-1.5 h-full bg-indigo-500 group-hover:w-2 transition-all"></div><div class="w-10 h-10 rounded-full bg-indigo-50 text-indigo-500 flex items-center justify-center mb-3"><i class="fa-solid fa-box-open text-lg"></i></div><p class="text-slate-500 text-[10px] font-black mb-1 uppercase tracking-wider">আজকের মোট অর্ডার</p><h3 id="stat-orders-today" class="text-2xl md:text-3xl font-black text-slate-800">0</h3></div>
                     <div class="bg-white p-5 md:p-6 rounded-[1.5rem] premium-shadow premium-shadow-hover transition-all relative overflow-hidden group"><div class="absolute right-0 top-0 w-1.5 h-full bg-brand group-hover:w-2 transition-all"></div><div class="w-10 h-10 rounded-full bg-orange-50 text-brand flex items-center justify-center mb-3"><i class="fa-solid fa-bolt text-lg"></i></div><p class="text-slate-500 text-[10px] font-black mb-1 uppercase tracking-wider">আজকের সেলস</p><h3 id="stat-sales-today" class="text-2xl md:text-3xl font-black text-brand">৳ 0</h3></div>
-                    <div class="bg-white p-5 md:p-6 rounded-[1.5rem] premium-shadow premium-shadow-hover transition-all relative overflow-hidden group"><div class="absolute right-0 top-0 w-1.5 h-full bg-emerald-500 group-hover:w-2 transition-all"></div><div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center mb-3"><i class="fa-solid fa-calendar-check text-lg"></i></div><p class="text-slate-500 text-[10px] font-black mb-1 uppercase tracking-wider">চলতি মাসের সেলস</p><h3 id="stat-sales-month" class="text-2xl md:text-3xl font-black text-slate-800">৳ 0</h3></div>
-                    <div class="bg-white p-5 md:p-6 rounded-[1.5rem] premium-shadow premium-shadow-hover transition-all relative overflow-hidden group"><div class="absolute right-0 top-0 w-1.5 h-full bg-purple-500 group-hover:w-2 transition-all"></div><div class="w-10 h-10 rounded-full bg-purple-50 text-purple-500 flex items-center justify-center mb-3"><i class="fa-solid fa-sack-dollar text-lg"></i></div><p class="text-slate-500 text-[10px] font-black mb-1 uppercase tracking-wider">মোট সেলস</p><h3 id="stat-sales-all" class="text-2xl md:text-3xl font-black text-slate-800">৳ 0</h3></div>
-                    <div class="bg-white p-5 md:p-6 rounded-[1.5rem] premium-shadow premium-shadow-hover transition-all relative overflow-hidden group md:col-span-1 col-span-2"><div class="absolute right-0 top-0 w-1.5 h-full bg-blue-500 group-hover:w-2 transition-all"></div><div class="w-10 h-10 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center mb-3"><i class="fa-solid fa-users text-lg"></i></div><p class="text-slate-500 text-[10px] font-black mb-1 uppercase tracking-wider">মোট কাস্টমার</p><h3 id="stat-users" class="text-2xl md:text-3xl font-black text-slate-800">0</h3></div>
-                </div>
-
-                <div class="bg-gradient-to-r from-white to-slate-50 p-6 rounded-[1.5rem] premium-shadow border border-slate-100 mb-8 flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
-                    <div class="flex-1 flex items-center gap-4 w-full"><div class="w-12 h-12 rounded-2xl bg-green-50 text-green-500 flex items-center justify-center text-xl shadow-sm shrink-0"><i class="fa-solid fa-arrow-trend-up"></i></div><div><p class="text-[10px] text-slate-500 font-black mb-1 uppercase tracking-wider">সবচেয়ে বেশি বিক্রিত</p><p id="stat-best-item" class="text-sm md:text-base font-black text-slate-800 leading-tight">-</p></div></div>
-                    <div class="hidden md:block w-px h-12 bg-slate-200"></div>
-                    <div class="flex-1 flex items-center gap-4 w-full border-t md:border-0 border-slate-200 pt-4 md:pt-0"><div class="w-12 h-12 rounded-2xl bg-red-50 text-red-500 flex items-center justify-center text-xl shadow-sm shrink-0"><i class="fa-solid fa-arrow-trend-down"></i></div><div><p class="text-[10px] text-slate-500 font-black mb-1 uppercase tracking-wider">সবচেয়ে কম বিক্রিত</p><p id="stat-worst-item" class="text-sm md:text-base font-black text-slate-800 leading-tight">-</p></div></div>
+                    <div class="bg-white p-5 md:p-6 rounded-[1.5rem] premium-shadow premium-shadow-hover transition-all relative overflow-hidden group"><div class="absolute right-0 top-0 w-1.5 h-full bg-emerald-500 group-hover:w-2 transition-all"></div><div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center mb-3"><i class="fa-solid fa-check-double text-lg"></i></div><p class="text-slate-500 text-[10px] font-black mb-1 uppercase tracking-wider">ডেলিভারি সম্পন্ন</p><h3 id="stat-delivered-today" class="text-2xl md:text-3xl font-black text-slate-800">0</h3></div>
+                    <div class="bg-white p-5 md:p-6 rounded-[1.5rem] premium-shadow premium-shadow-hover transition-all relative overflow-hidden group"><div class="absolute right-0 top-0 w-1.5 h-full bg-red-500 group-hover:w-2 transition-all"></div><div class="w-10 h-10 rounded-full bg-red-50 text-red-500 flex items-center justify-center mb-3"><i class="fa-solid fa-ban text-lg"></i></div><p class="text-slate-500 text-[10px] font-black mb-1 uppercase tracking-wider">ক্যানসেল হয়েছে</p><h3 id="stat-cancelled-today" class="text-2xl md:text-3xl font-black text-slate-800">0</h3></div>
                 </div>
 
                 <div class="flex items-center gap-3 mb-6 mt-10">
@@ -133,7 +115,6 @@
                 </div>
                 
                 <div class="bg-white p-5 rounded-[1.5rem] border border-slate-100 premium-shadow mb-8">
-                    <!-- Advanced Filters for Orders -->
                     <div class="grid grid-cols-2 md:grid-cols-6 gap-3">
                         <div class="col-span-2 md:col-span-2 relative">
                             <i class="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
@@ -161,17 +142,16 @@
                 </div>
 
                 <div id="orders-view-container">
-                    <div class="grid grid-cols-1 gap-5" id="all-orders-grid"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="all-orders-grid"></div>
                     <div class="hidden bg-white border border-slate-100 rounded-[1.5rem] premium-shadow overflow-hidden" id="all-orders-table-wrapper">
                         <div class="overflow-x-auto">
                             <table class="w-full text-left text-sm whitespace-nowrap">
                                 <thead class="bg-slate-50/80 border-b border-slate-100 font-black text-slate-600 uppercase tracking-wider text-[11px]">
                                     <tr>
-                                        <th class="p-5">অর্ডার আইডি ও সময়</th>
-                                        <th class="p-5">কাস্টমার</th>
-                                        <th class="p-5 w-1/3">খাবারের বিবরণ</th>
-                                        <th class="p-5">মোট বিল</th>
-                                        <th class="p-5 text-center">অ্যাকশন/স্ট্যাটাস</th>
+                                        <th class="p-4">অর্ডার আইডি ও সময়</th>
+                                        <th class="p-4">কাস্টমার</th>
+                                        <th class="p-4 w-1/3">খাবারের বিবরণ</th>
+                                        <th class="p-4 text-center">স্ট্যাটাস ও অ্যাকশন</th>
                                     </tr>
                                 </thead>
                                 <tbody id="all-orders-table" class="divide-y divide-slate-50/80"></tbody>
@@ -259,7 +239,7 @@
             <div id="tab-notifications" class="tab-content">
                 <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-8">
                     <div>
-                        <h2 class="text-3xl font-black text-slate-800 tracking-tight">নোটিফিকেশন</h2>
+                        <h2 class="text-3xl font-black text-slate-800 tracking-tight">নোটিফিকেশন ও মেসেজ</h2>
                         <p class="text-sm font-bold text-slate-500 mt-1">কাস্টমারদের ইন-অ্যাপ মেসেজ পাঠান</p>
                     </div>
                     <button onclick="openNotifModal()" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl text-sm font-black shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 hover:-translate-y-0.5 transition-all w-full sm:w-auto"><i class="fa-solid fa-paper-plane mr-2"></i> মেসেজ পাঠান</button>
@@ -349,37 +329,24 @@
         </div>
     </main>
 
-    <button onclick="toggleAdminOrderNotif()" class="fixed bottom-6 right-6 md:bottom-10 md:right-10 bg-white border border-slate-200 text-brand premium-shadow w-16 h-16 rounded-full flex items-center justify-center z-[9000] hover:bg-brand hover:text-white hover:scale-105 transition-all group">
-        <i class="fa-solid fa-bell text-2xl group-hover:animate-bounce"></i>
-        <span id="new-order-badge" class="absolute -top-1 -right-1 bg-red-500 text-white text-[11px] font-black h-7 w-7 items-center justify-center rounded-full border-[3px] border-white hidden shadow-sm">0</span>
-    </button>
-
-    <div id="admin-order-notif-panel" class="fixed right-0 top-0 h-full w-80 max-w-full bg-slate-50 shadow-2xl z-[10000] transform translate-x-full transition-transform duration-300 flex flex-col border-l border-slate-200">
-        <div class="p-6 bg-slate-900 text-white flex justify-between items-center shadow-md relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-brand/20 to-transparent"></div>
-            <h3 class="font-black text-sm tracking-widest uppercase relative z-10 flex items-center gap-2"><div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center"><i class="fa-solid fa-bell text-brand text-lg"></i></div> আজকের অর্ডার</h3>
-            <button onclick="toggleAdminOrderNotif()" class="relative z-10 text-slate-400 hover:text-white w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center transition-colors"><i class="fa-solid fa-times"></i></button>
-        </div>
-        <div id="admin-order-notif-list" class="flex-1 overflow-y-auto bg-slate-50 p-4 space-y-4 custom-scroll"></div>
-    </div>
-
     <!-- CUSTOMER PROFILE MODAL -->
     <div id="customer-modal" class="fixed inset-0 bg-slate-900/80 z-[9999] hidden items-center justify-center p-4 backdrop-blur-sm">
         <div class="bg-slate-50 rounded-[2rem] shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden animate-[fadeIn_0.3s_ease-out] border border-slate-200">
-            <div class="p-6 md:p-8 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white relative overflow-hidden gap-4 shrink-0">
+            <div class="p-5 md:p-6 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white relative overflow-hidden gap-4 shrink-0">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-brand/5 rounded-bl-full -z-0"></div>
                 <div class="relative z-10 flex gap-4 items-center">
-                    <div class="w-16 h-16 rounded-full bg-indigo-50 text-indigo-500 flex items-center justify-center text-2xl border-2 border-indigo-100 shadow-sm"><i class="fa-solid fa-user"></i></div>
+                    <div class="w-14 h-14 rounded-full bg-indigo-50 text-indigo-500 flex items-center justify-center text-2xl border-2 border-indigo-100 shadow-sm"><i class="fa-solid fa-user"></i></div>
                     <div>
-                        <h2 id="cp-name" class="text-2xl font-black text-slate-900 mb-1 tracking-tight"></h2>
-                        <a id="cp-phone" href="#" class="text-sm text-blue-600 font-bold hover:underline bg-blue-50 border border-blue-100 px-3 py-1 rounded-lg inline-flex items-center gap-2 shadow-sm"><i class="fa-solid fa-phone"></i><span></span></a>
+                        <h2 id="cp-name" class="text-xl font-black text-slate-900 mb-1 tracking-tight"></h2>
+                        <a id="cp-phone" href="#" class="text-xs text-blue-600 font-bold hover:underline bg-blue-50 border border-blue-100 px-3 py-1 rounded-lg inline-flex items-center gap-2 shadow-sm"><i class="fa-solid fa-phone"></i><span></span></a>
                     </div>
                 </div>
-                <div class="flex flex-row sm:flex-col items-end gap-3 w-full sm:w-auto relative z-10">
-                    <button onclick="closeCustomerModal()" class="text-slate-400 hover:text-red-500 bg-slate-100 hover:bg-red-50 w-10 h-10 rounded-full flex items-center justify-center transition-colors absolute sm:static right-0 -top-16 sm:top-auto"><i class="fa-solid fa-times text-lg"></i></button>
-                    <div class="flex items-center gap-2 w-full sm:w-auto mt-4 sm:mt-0">
+                <div class="flex flex-row sm:flex-col items-end gap-2 w-full sm:w-auto relative z-10">
+                    <button onclick="closeCustomerModal()" class="text-slate-400 hover:text-red-500 bg-slate-100 hover:bg-red-50 w-8 h-8 rounded-full flex items-center justify-center transition-colors absolute sm:static right-0 -top-12 sm:top-auto"><i class="fa-solid fa-times"></i></button>
+                    <div class="flex items-center gap-2 w-full sm:w-auto mt-2 sm:mt-0">
+                        <button id="cp-msg-btn" onclick="" class="text-[10px] font-black px-4 py-2.5 rounded-xl text-blue-600 bg-blue-50 hover:bg-blue-100 border border-blue-100 shadow-sm transition-colors uppercase tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-paper-plane"></i> মেসেজ</button>
                         <div class="relative flex-1 sm:flex-none">
-                            <select id="cp-tag" onchange="saveCustomerTag()" class="w-full text-xs border-2 border-slate-100 rounded-xl px-4 py-2.5 outline-none bg-slate-50 font-black text-slate-700 cursor-pointer focus:border-brand transition-all appearance-none"><option value="">-- ট্যাগ সেট করুন --</option><option value="Regular">Regular (নিয়মিত)</option><option value="Good">Good (ভালো)</option><option value="Bad">Bad (খারাপ)</option></select>
+                            <select id="cp-tag" onchange="saveCustomerTag()" class="w-full text-xs border-2 border-slate-100 rounded-xl px-4 py-2.5 outline-none bg-slate-50 font-black text-slate-700 cursor-pointer focus:border-brand transition-all appearance-none"><option value="">-- ট্যাগ --</option><option value="Regular">Regular</option><option value="Good">Good</option><option value="Bad">Bad</option></select>
                             <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-[10px] pointer-events-none"></i>
                         </div>
                         <button id="cp-block-btn" onclick="toggleCustomerBlock()" class="text-[10px] font-black px-4 py-2.5 rounded-xl text-white bg-red-500 hover:bg-red-600 shadow-sm transition-colors uppercase tracking-wider">ব্লক</button>
@@ -389,18 +356,18 @@
             
             <div class="flex-1 overflow-y-auto custom-scroll bg-slate-100/50 relative">
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 bg-slate-50 shrink-0">
-                    <div class="bg-white p-4 rounded-2xl border border-slate-100 premium-shadow text-center"><div class="w-8 h-8 mx-auto bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mb-2"><i class="fa-solid fa-basket-shopping"></i></div><p class="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-1">মোট অর্ডার</p><p id="cp-total-orders" class="text-2xl font-black text-slate-800">0</p></div>
-                    <div class="bg-white p-4 rounded-2xl border border-emerald-100 premium-shadow text-center relative overflow-hidden"><div class="absolute right-0 top-0 w-1 h-full bg-emerald-400"></div><div class="w-8 h-8 mx-auto bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mb-2"><i class="fa-solid fa-check-circle"></i></div><p class="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-1">ডেলিভারি সম্পন্ন</p><p id="cp-delivered" class="text-2xl font-black text-emerald-600">0</p></div>
-                    <div class="bg-white p-4 rounded-2xl border border-orange-100 premium-shadow text-center relative overflow-hidden"><div class="absolute right-0 top-0 w-1 h-full bg-orange-400"></div><div class="w-8 h-8 mx-auto bg-orange-50 text-brand rounded-full flex items-center justify-center mb-2"><i class="fa-solid fa-sack-dollar"></i></div><p class="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-1">মোট খরচ</p><p id="cp-spent" class="text-2xl font-black text-brand">0</p></div>
-                    <div class="bg-white p-4 rounded-2xl border border-purple-100 premium-shadow text-center cursor-pointer hover:bg-purple-50 transition-colors relative overflow-hidden group" onclick="promptPointsEdit()"><div class="absolute right-0 top-0 w-1 h-full bg-purple-400"></div><div class="w-8 h-8 mx-auto bg-purple-50 text-purple-500 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform"><i class="fa-solid fa-award"></i></div><p class="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-1 flex justify-center items-center gap-1.5">পয়েন্ট <i class="fa-solid fa-pen text-blue-400 text-[8px]"></i></p><p id="cp-points" class="text-2xl font-black text-purple-600">0</p></div>
+                    <div class="bg-white p-4 rounded-2xl border border-slate-100 premium-shadow text-center"><div class="w-8 h-8 mx-auto bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mb-2"><i class="fa-solid fa-basket-shopping text-sm"></i></div><p class="text-[9px] text-slate-400 font-black uppercase tracking-widest mb-1">মোট অর্ডার</p><p id="cp-total-orders" class="text-xl font-black text-slate-800">0</p></div>
+                    <div class="bg-white p-4 rounded-2xl border border-emerald-100 premium-shadow text-center relative overflow-hidden"><div class="absolute right-0 top-0 w-1 h-full bg-emerald-400"></div><div class="w-8 h-8 mx-auto bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mb-2"><i class="fa-solid fa-check-circle text-sm"></i></div><p class="text-[9px] text-slate-400 font-black uppercase tracking-widest mb-1">ডেলিভারি সম্পন্ন</p><p id="cp-delivered" class="text-xl font-black text-emerald-600">0</p></div>
+                    <div class="bg-white p-4 rounded-2xl border border-orange-100 premium-shadow text-center relative overflow-hidden"><div class="absolute right-0 top-0 w-1 h-full bg-orange-400"></div><div class="w-8 h-8 mx-auto bg-orange-50 text-brand rounded-full flex items-center justify-center mb-2"><i class="fa-solid fa-sack-dollar text-sm"></i></div><p class="text-[9px] text-slate-400 font-black uppercase tracking-widest mb-1">মোট খরচ</p><p id="cp-spent" class="text-xl font-black text-brand">0</p></div>
+                    <div class="bg-white p-4 rounded-2xl border border-purple-100 premium-shadow text-center cursor-pointer hover:bg-purple-50 transition-colors relative overflow-hidden group" onclick="promptPointsEdit()"><div class="absolute right-0 top-0 w-1 h-full bg-purple-400"></div><div class="w-8 h-8 mx-auto bg-purple-50 text-purple-500 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform"><i class="fa-solid fa-award text-sm"></i></div><p class="text-[9px] text-slate-400 font-black uppercase tracking-widest mb-1 flex justify-center items-center gap-1.5">পয়েন্ট <i class="fa-solid fa-pen text-blue-400 text-[8px]"></i></p><p id="cp-points" class="text-xl font-black text-purple-600">0</p></div>
                 </div>
-                <div class="p-5">
-                    <h3 class="font-black text-sm text-slate-700 mb-4 uppercase tracking-widest px-1 border-l-4 border-brand pl-3">অর্ডার হিস্ট্রি</h3>
-                    <div id="cp-order-history" class="space-y-4"></div>
+                <div class="p-5 pt-0">
+                    <h3 class="font-black text-xs text-slate-700 mb-3 uppercase tracking-widest px-1 border-l-4 border-brand pl-3">অর্ডার হিস্ট্রি</h3>
+                    <div id="cp-order-history" class="space-y-3"></div>
                 </div>
             </div>
             
-            <div class="p-4 border-t border-slate-200 bg-white flex justify-end shrink-0"><button onclick="deleteCustomerData()" class="text-xs text-red-500 font-black hover:bg-red-50 px-4 py-2 rounded-lg transition-colors flex items-center gap-2"><i class="fa-solid fa-trash"></i> কাস্টমার ডেটা মুছুন</button></div>
+            <div class="p-4 border-t border-slate-200 bg-white flex justify-end shrink-0"><button onclick="deleteCustomerData()" class="text-[11px] text-red-500 font-black hover:bg-red-50 px-4 py-2 rounded-lg transition-colors flex items-center gap-2"><i class="fa-solid fa-trash"></i> কাস্টমার ডেটা মুছুন</button></div>
         </div>
     </div>
 
@@ -531,9 +498,8 @@
         let customerMap = {}; 
         let viewedOrders = JSON.parse(localStorage.getItem('adminViewedOrders') || '[]');
         let activeAdminCategory = 'All';
+        let adminNotifsList = [];
         
-        let dbStartDate = null;
-        let dbEndDate = null;
         let isOrderTableView = false; 
         
         const fetchPost = async (data) => await fetch(scriptURL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) });
@@ -629,85 +595,26 @@
         }
 
         // --- DASHBOARD DATA & FILTERS ---
-        function setDbFilter(type) {
-            const now = new Date();
-            if(type === 'today') {
-                document.getElementById('db-start-date').value = formatEnglishDate(now, true);
-                document.getElementById('db-end-date').value = formatEnglishDate(now, true);
-            } else if (type === '7days') {
-                document.getElementById('db-end-date').value = formatEnglishDate(now, true);
-                const past = new Date(now); past.setDate(past.getDate() - 6);
-                document.getElementById('db-start-date').value = formatEnglishDate(past, true);
-            } else if (type === 'month') {
-                document.getElementById('db-end-date').value = formatEnglishDate(now, true);
-                const startMonth = new Date(now.getFullYear(), now.getMonth(), 1);
-                document.getElementById('db-start-date').value = formatEnglishDate(startMonth, true);
-            }
-            applyDashboardFilter();
-        }
-
-        function applyDashboardFilter() {
-            const start = document.getElementById('db-start-date').value;
-            const end = document.getElementById('db-end-date').value;
-            dbStartDate = start ? new Date(start).setHours(0,0,0,0) : null;
-            dbEndDate = end ? new Date(end).setHours(23,59,59,999) : null;
-            renderDashboard();
-        }
-
-        function getFilteredOrders() {
-            return allOrders.filter(o => {
-                const orderTime = parseOrderTime(o.time);
-                if(orderTime === 0) return true; 
-                if(dbStartDate && orderTime < dbStartDate) return false;
-                if(dbEndDate && orderTime > dbEndDate) return false;
-                return true;
-            });
-        }
-
         function getSalesStats() {
-            let today = 0, month = 0, all = 0, filteredOrdersCount = 0; const now = new Date();
-            const filteredOrdersList = getFilteredOrders();
+            let todayOrders = 0, todaySales = 0, deliveredToday = 0, cancelledToday = 0; 
+            const now = new Date();
+            const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
             
-            filteredOrdersList.forEach(o => {
-                const detailsStr = String(o.details || '');
-                if(detailsStr.includes('[SPECIAL FOOD REQUEST]')) return; 
-                
-                const statusStr = String(o.status || '');
-                const isDelivered = statusStr === 'সম্পূর্ণ হয়েছে' || statusStr === 'ডেলিভারি সম্পন্ন হয়েছে';
-                
-                if(isDelivered) {
-                    filteredOrdersCount++;
-                    const amt = Number(o.total) || 0; 
-                    all += amt;
-                    
-                    const oDate = new Date(o.time);
-                    if(!isNaN(oDate.getTime())) {
-                        if(oDate.getMonth() === now.getMonth() && oDate.getFullYear() === now.getFullYear()) month += amt;
-                        if(oDate.toDateString() === now.toDateString()) today += amt;
+            allOrders.forEach(o => {
+                const orderTime = parseOrderTime(o.time);
+                if(orderTime >= todayStart) {
+                    const statusStr = String(o.status || '');
+                    todayOrders++;
+                    if(statusStr === 'সম্পূর্ণ হয়েছে' || statusStr === 'ডেলিভারি সম্পন্ন হয়েছে') {
+                        deliveredToday++;
+                        todaySales += Number(o.total) || 0;
+                    }
+                    if(statusStr.includes('বাতিল')) {
+                        cancelledToday++;
                     }
                 }
             });
-            return { today, month, all, filteredOrdersCount };
-        }
-
-        function getItemStats() {
-            let itemCounts = {};
-            const filteredOrdersList = getFilteredOrders();
-            
-            filteredOrdersList.forEach(o => {
-                const statusStr = String(o.status || '');
-                const detailsStr = String(o.details || '');
-                
-                if(statusStr.includes('বাতিল')) return;
-                if(detailsStr.includes('[SPECIAL FOOD REQUEST]')) return;
-                if(!detailsStr) return; 
-                
-                let parts = detailsStr.split(' | Note:')[0].split(',');
-                parts.forEach(p => { let match = p.match(/(.*?)\((\d+)\)/); if(match) { let name = match[1].trim(); let qty = parseInt(match[2]); itemCounts[name] = (itemCounts[name] || 0) + qty; } });
-            });
-            let sorted = Object.entries(itemCounts).sort((a,b)=>b[1]-a[1]);
-            if(sorted.length === 0) return { best: '-', worst: '-' };
-            return { best: `${sorted[0][0]} (${sorted[0][1].toLocaleString('en-US')})`, worst: `${sorted[sorted.length-1][0]} (${sorted[sorted.length-1][1].toLocaleString('en-US')})` };
+            return { todayOrders, todaySales, deliveredToday, cancelledToday };
         }
 
         function processCustomers() {
@@ -800,18 +707,20 @@
                 todaysOrders.forEach(o => {
                     const isUnread = !viewedOrders.includes(o.id); if(isUnread) unreadCount++;
                     html += `
-                    <div class="p-5 bg-white rounded-2xl border transition-all ${isUnread ? 'border-l-4 border-l-brand premium-shadow' : 'border-slate-100 shadow-sm'}">
-                        <div class="flex justify-between items-start mb-3 border-b border-slate-50 pb-3 cursor-pointer" onclick="viewOrderFromNotif('${o.id}')">
+                    <div class="p-4 bg-white rounded-2xl border transition-all ${isUnread ? 'border-l-4 border-l-brand premium-shadow' : 'border-slate-100 shadow-sm'}">
+                        <div class="flex justify-between items-start mb-3 border-b border-slate-50 pb-2 cursor-pointer" onclick="viewOrderFromNotif('${o.id}')">
                             <span class="font-black text-sm text-slate-800">${o.id} <span class="${isUnread?'inline-block':'hidden'} bg-red-500 text-white text-[8px] px-1.5 py-0.5 rounded ml-1 tracking-wider shadow-sm uppercase">নতুন</span></span>
                             <div class="flex flex-col items-end">
                                 <span class="text-[9px] text-slate-500 font-bold mb-1.5"><i class="fa-regular fa-clock mr-1"></i>${formatEnglishDate(o.time, false)}</span>
                                 <span class="text-[9px] px-2 py-1 rounded-md border font-black text-slate-700 bg-slate-50 uppercase tracking-widest">${o.status || 'পেন্ডিং'}</span>
                             </div>
                         </div>
-                        <p class="text-xs font-black text-slate-800 flex items-center mb-3 cursor-pointer" onclick="viewOrderFromNotif('${o.id}')"><i class="fa-solid fa-user text-slate-400 mr-2"></i> ${o.name || 'Guest'}</p>
+                        <div class="flex justify-between items-center mb-3">
+                            <p class="text-xs font-black text-slate-800 flex items-center cursor-pointer" onclick="viewOrderFromNotif('${o.id}')"><i class="fa-solid fa-user text-slate-400 mr-2"></i> ${o.name || 'Guest'}</p>
+                            <button onclick="openNotifModal('${o.phone}')" class="text-[9px] bg-blue-50 text-blue-600 border border-blue-100 px-2 py-1 rounded shadow-sm font-black"><i class="fa-solid fa-paper-plane mr-1"></i> মেসেজ</button>
+                        </div>
                         
-                        <div class="text-[10px] text-slate-600 bg-slate-50 p-3 rounded-xl border border-slate-100 cursor-pointer hover:bg-slate-100 transition-colors" onclick="let el = this.querySelector('.order-text'); el.classList.toggle('line-clamp-2');" title="বিস্তারিত দেখতে ক্লিক করুন">
-                            <p class="font-black text-slate-400 uppercase tracking-widest flex justify-between items-center mb-2"><span>আইটেম:</span><span class="text-brand flex items-center gap-1 bg-brand/10 px-2 py-1 rounded-md"><i class="fa-solid fa-expand text-[8px]"></i> ক্লিক</span></p>
+                        <div class="text-[10px] text-slate-600 bg-slate-50 p-2 rounded-xl border border-slate-100 cursor-pointer hover:bg-slate-100 transition-colors" onclick="let el = this.querySelector('.order-text'); el.classList.toggle('line-clamp-2');" title="বিস্তারিত দেখতে ক্লিক করুন">
                             <p class="line-clamp-2 order-text whitespace-pre-wrap leading-relaxed font-bold">${o.details || 'No details'}</p>
                         </div>
                         <p class="text-sm text-brand font-black mt-3 text-right">৳ ${Number(o.total||0).toLocaleString('en-US')}</p>
@@ -854,26 +763,19 @@
         // --- DASHBOARD RENDERS ---
         function renderDashboard() {
             try {
-                document.getElementById('stat-users').textContent = Object.keys(customerMap).length.toLocaleString('en-US');
                 const sales = getSalesStats();
                 
-                const elOrders = document.getElementById('stat-orders-today-count');
-                if(elOrders) elOrders.textContent = sales.filteredOrdersCount.toLocaleString('en-US');
+                const elOrders = document.getElementById('stat-orders-today');
+                if(elOrders) elOrders.textContent = sales.todayOrders.toLocaleString('en-US');
                 
-                const elMonth = document.getElementById('stat-sales-month');
-                if(elMonth) elMonth.textContent = `৳ ${sales.month.toLocaleString('en-US')}`;
+                const elTodaySales = document.getElementById('stat-sales-today');
+                if(elTodaySales) elTodaySales.textContent = `৳ ${sales.todaySales.toLocaleString('en-US')}`;
                 
-                const elToday = document.getElementById('stat-sales-today');
-                if(elToday) elToday.textContent = `৳ ${sales.today.toLocaleString('en-US')}`;
+                const elDelivered = document.getElementById('stat-delivered-today');
+                if(elDelivered) elDelivered.textContent = sales.deliveredToday.toLocaleString('en-US');
                 
-                const elAll = document.getElementById('stat-sales-all');
-                if(elAll) elAll.textContent = `৳ ${sales.all.toLocaleString('en-US')}`;
-
-                const items = getItemStats();
-                const elBest = document.getElementById('stat-best-item');
-                if(elBest) elBest.textContent = items.best; 
-                const elWorst = document.getElementById('stat-worst-item');
-                if(elWorst) elWorst.textContent = items.worst;
+                const elCancelled = document.getElementById('stat-cancelled-today');
+                if(elCancelled) elCancelled.textContent = sales.cancelledToday.toLocaleString('en-US');
 
                 const pending = allOrders.filter(o => (o.status || '') === 'পেন্ডিং').length;
                 const elPending = document.getElementById('pending-badge');
@@ -882,8 +784,7 @@
                     elPending.style.display = pending > 0 ? 'inline' : 'none';
                 }
 
-                const filteredList = getFilteredOrders();
-                const validRecentOrders = filteredList.filter(o => !String(o.details || '').includes('[SPECIAL FOOD REQUEST]'));
+                const validRecentOrders = allOrders.filter(o => !String(o.details || '').includes('[SPECIAL FOOD REQUEST]'));
                 const container = document.getElementById('recent-orders-list');
                 
                 if(!container) return;
@@ -906,44 +807,47 @@
                         // Hide Est Time if done or canceled
                         let estTimeBtn = '';
                         if(o.status !== 'সম্পূর্ণ হয়েছে' && o.status !== 'ডেলিভারি সম্পন্ন হয়েছে' && !String(o.status||'').includes('বাতিল')) {
-                            estTimeBtn = `<button onclick="promptStatusUpdate('${o.id}')" class="w-full bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 px-4 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-wide transition-colors flex items-center justify-center gap-2 shadow-sm">
+                            estTimeBtn = `<button onclick="promptStatusUpdate('${o.id}')" class="flex-1 bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 px-3 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-wide transition-colors flex items-center justify-center gap-1.5 shadow-sm">
                                             <i class="fa-solid fa-stopwatch text-blue-500"></i> ডেলিভারি সময়
                                         </button>`;
                         }
 
                         return `
-                        <div class="bg-white p-5 md:p-6 rounded-[1.5rem] border border-slate-100 premium-shadow premium-shadow-hover transition-all duration-300 flex flex-col lg:flex-row justify-between lg:items-center gap-5 relative overflow-hidden ${borderLeftClass}">
+                        <div class="bg-white p-4 md:p-5 rounded-[1.5rem] border border-slate-100 premium-shadow premium-shadow-hover transition-all duration-300 flex flex-col lg:flex-row justify-between lg:items-center gap-4 relative overflow-hidden ${borderLeftClass}">
                             
                             <div class="flex-1">
-                                <div class="flex flex-wrap items-center gap-3 mb-4 border-b border-slate-50 pb-3">
+                                <div class="flex flex-wrap items-center gap-3 mb-3 border-b border-slate-50 pb-2">
                                     <span class="font-black text-sm text-slate-800 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-200 shadow-sm"><i class="fa-solid fa-hashtag text-brand mr-1"></i>${o.id}</span>
                                     <span class="text-[10px] text-blue-700 bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-xl font-black shadow-sm"><i class="fa-regular fa-clock mr-1 text-blue-500"></i>${formatEnglishDate(o.time)}</span>
                                 </div>
                                 
-                                <div class="flex flex-wrap items-center gap-3 mb-4">
-                                    <div class="flex items-center gap-2 bg-slate-50 border border-slate-100 px-3.5 py-2 rounded-xl shadow-sm">
+                                <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+                                    <div class="flex items-center gap-2 bg-slate-50 border border-slate-100 px-3.5 py-1.5 rounded-xl shadow-sm">
                                         <div class="w-6 h-6 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center text-[10px]"><i class="fa-solid fa-user"></i></div>
                                         <span class="text-xs text-slate-800 font-black">${o.name || 'Guest'}</span>
                                         ${tagHtml}
                                     </div>
-                                    <a href="tel:${o.phone}" class="flex items-center gap-2 bg-green-50 border border-green-100 hover:bg-green-100 transition-colors px-3.5 py-2 rounded-xl text-xs font-black text-green-700 shadow-sm">
-                                        <i class="fa-solid fa-phone"></i> ${o.phone}
-                                    </a>
+                                    <div class="flex gap-2">
+                                        <button onclick="openNotifModal('${o.phone}')" class="flex items-center gap-1.5 bg-blue-50 border border-blue-100 hover:bg-blue-100 transition-colors px-3 py-1.5 rounded-xl text-[10px] font-black text-blue-700 shadow-sm"><i class="fa-solid fa-paper-plane"></i> মেসেজ</button>
+                                        <a href="tel:${o.phone}" class="flex items-center gap-1.5 bg-green-50 border border-green-100 hover:bg-green-100 transition-colors px-3 py-1.5 rounded-xl text-[10px] font-black text-green-700 shadow-sm"><i class="fa-solid fa-phone"></i> কল</a>
+                                    </div>
                                 </div>
                                 
-                                <div class="text-[11px] text-slate-700 bg-gradient-to-r from-orange-50/50 to-slate-50/50 p-4 rounded-xl border border-orange-100/50 shadow-sm relative overflow-hidden mt-2">
+                                <div class="text-[11px] text-slate-700 bg-gradient-to-r from-orange-50/50 to-slate-50/50 p-3 rounded-xl border border-orange-100/50 shadow-sm relative overflow-hidden mt-2">
                                     <div class="absolute left-0 top-0 w-1 h-full bg-brand/40"></div>
                                     ${formatOrderDetails(o.details)}
                                 </div>
                             </div>
 
-                            <div class="shrink-0 w-full lg:w-56 bg-slate-50/80 p-5 rounded-2xl border border-slate-100 flex flex-col items-center lg:items-end justify-center shadow-sm">
+                            <div class="shrink-0 w-full lg:w-56 bg-slate-50/80 p-4 rounded-2xl border border-slate-100 flex flex-col items-center lg:items-end justify-center shadow-sm">
                                 <p class="text-[10px] text-slate-500 uppercase font-black tracking-widest mb-1">মোট বিল</p>
-                                <p class="text-brand font-black text-2xl mb-5">৳ ${Number(o.total||0).toLocaleString('en-US')}</p>
+                                <p class="text-brand font-black text-2xl mb-4">৳ ${Number(o.total||0).toLocaleString('en-US')}</p>
                                 
-                                <div class="w-full flex flex-col gap-3">
+                                <div class="w-full flex flex-col gap-2">
                                     ${getStatusDropdown(o.id, o.status)}
-                                    ${estTimeBtn}
+                                    <div class="flex gap-2 w-full">
+                                        ${estTimeBtn}
+                                    </div>
                                 </div>
                             </div>
                         </div>`
@@ -977,7 +881,7 @@
             if(mappedStatus === 'বাতিল') bgClass = "bg-red-50 text-red-800 border-red-200 focus:ring-red-200";
 
             return `<div class="relative w-full">
-                        <select onchange="updateStatus('${id}', this.value)" class="w-full text-xs border-2 rounded-xl px-4 py-3 outline-none focus:ring-4 font-black transition-all cursor-pointer appearance-none shadow-sm ${bgClass}">
+                        <select onchange="updateStatus('${id}', this.value)" class="w-full text-xs border border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 font-black transition-all cursor-pointer appearance-none shadow-sm ${bgClass}">
                             ${options}
                         </select>
                         <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 transform -translate-y-1/2 text-[10px] pointer-events-none opacity-60"></i>
@@ -1033,50 +937,53 @@
 
                         let estTimeBtn = '';
                         if(o.status !== 'সম্পূর্ণ হয়েছে' && o.status !== 'ডেলিভারি সম্পন্ন হয়েছে' && !String(o.status||'').includes('বাতিল')) {
-                            estTimeBtn = `<button onclick="promptStatusUpdate('${o.id}')" class="w-full bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 px-4 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-wide transition-colors flex items-center justify-center gap-2 shadow-sm">
-                                            <i class="fa-solid fa-stopwatch text-blue-500"></i> ডেলিভারি সময়
+                            estTimeBtn = `<button onclick="promptStatusUpdate('${o.id}')" class="flex-1 bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 px-3 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-wide transition-colors flex items-center justify-center gap-1.5 shadow-sm">
+                                            <i class="fa-solid fa-stopwatch text-blue-500"></i> সময় দিন
                                         </button>`;
                         }
 
                         return `
-                        <div class="bg-white p-5 md:p-6 rounded-[1.5rem] border border-slate-100 premium-shadow premium-shadow-hover transition-all duration-300 flex flex-col lg:flex-row justify-between lg:items-center gap-5 relative overflow-hidden ${borderLeftClass}">
+                        <div class="bg-white p-4 md:p-5 rounded-[1.5rem] border border-slate-100 premium-shadow premium-shadow-hover transition-all duration-300 flex flex-col lg:flex-row justify-between lg:items-center gap-4 relative overflow-hidden ${borderLeftClass}">
                             
                             <div class="flex-1">
-                                <div class="flex flex-wrap items-center gap-3 mb-4 border-b border-slate-50 pb-3">
+                                <div class="flex flex-wrap items-center gap-3 mb-3 border-b border-slate-50 pb-2">
                                     <span class="font-black text-sm text-slate-800 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-200 shadow-sm"><i class="fa-solid fa-hashtag text-brand mr-1"></i>${o.id}</span>
                                     <span class="text-[10px] text-blue-700 bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-xl font-black shadow-sm"><i class="fa-regular fa-clock mr-1 text-blue-500"></i>${formatEnglishDate(o.time)}</span>
                                 </div>
                                 
-                                <div class="flex flex-wrap items-center gap-3 mb-4">
-                                    <div class="flex items-center gap-2 bg-slate-50 border border-slate-100 px-3.5 py-2 rounded-xl shadow-sm">
+                                <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+                                    <div class="flex items-center gap-2 bg-slate-50 border border-slate-100 px-3.5 py-1.5 rounded-xl shadow-sm">
                                         <div class="w-6 h-6 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center text-[10px]"><i class="fa-solid fa-user"></i></div>
                                         <span class="text-xs text-slate-800 font-black">${o.name || 'Guest'}</span>
                                         ${tagHtml}
                                     </div>
-                                    <a href="tel:${o.phone}" class="flex items-center gap-2 bg-green-50 border border-green-100 hover:bg-green-100 transition-colors px-3.5 py-2 rounded-xl text-xs font-black text-green-700 shadow-sm">
-                                        <i class="fa-solid fa-phone"></i> ${o.phone}
-                                    </a>
+                                    <div class="flex gap-2">
+                                        <button onclick="openNotifModal('${o.phone}')" class="flex items-center gap-1.5 bg-blue-50 border border-blue-100 hover:bg-blue-100 transition-colors px-3 py-1.5 rounded-xl text-[10px] font-black text-blue-700 shadow-sm"><i class="fa-solid fa-paper-plane"></i> মেসেজ</button>
+                                        <a href="tel:${o.phone}" class="flex items-center gap-1.5 bg-green-50 border border-green-100 hover:bg-green-100 transition-colors px-3 py-1.5 rounded-xl text-[10px] font-black text-green-700 shadow-sm"><i class="fa-solid fa-phone"></i> কল</a>
+                                    </div>
                                 </div>
-                                <div class="text-[10px] text-slate-600 mb-3 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100 font-bold inline-flex items-center gap-2"><i class="fa-solid fa-location-dot text-slate-400"></i> ${o.address || 'ঠিকানা নেই'}</div>
+                                <div class="text-[10px] text-slate-600 mb-2 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100 font-bold inline-flex items-center gap-2"><i class="fa-solid fa-location-dot text-slate-400"></i> ${o.address || 'ঠিকানা নেই'}</div>
                                 
-                                <div class="text-[11px] text-slate-700 bg-gradient-to-r from-orange-50/50 to-slate-50/50 p-4 rounded-xl border border-orange-100/50 shadow-sm relative overflow-hidden mt-1">
+                                <div class="text-[11px] text-slate-700 bg-gradient-to-r from-orange-50/50 to-slate-50/50 p-3 rounded-xl border border-orange-100/50 shadow-sm relative overflow-hidden mt-1">
                                     <div class="absolute left-0 top-0 w-1 h-full bg-brand/40"></div>
                                     ${formatOrderDetails(o.details)}
                                 </div>
                                 
-                                ${ ratingNum > 0 ? `<div class="bg-yellow-50/50 p-4 rounded-xl border border-yellow-200 mt-4 shadow-sm relative overflow-hidden"><div class="absolute left-0 top-0 w-1 h-full bg-yellow-400"></div><p class="text-[9px] font-black text-yellow-700 uppercase tracking-widest mb-1.5 flex items-center gap-1"><i class="fa-solid fa-star text-[10px]"></i> কাস্টমার রিভিউ</p><div class="text-yellow-500 text-xs mb-1.5">${'<i class="fa-solid fa-star"></i>'.repeat(ratingNum)}</div><p class="text-xs text-slate-700 italic font-bold">"${o.review || ''}"</p></div>` : '' }
+                                ${ ratingNum > 0 ? `<div class="bg-yellow-50/50 p-3 rounded-xl border border-yellow-200 mt-3 shadow-sm relative overflow-hidden"><div class="absolute left-0 top-0 w-1 h-full bg-yellow-400"></div><p class="text-[9px] font-black text-yellow-700 uppercase tracking-widest mb-1 flex items-center gap-1"><i class="fa-solid fa-star text-[10px]"></i> কাস্টমার রিভিউ</p><div class="text-yellow-500 text-xs mb-1">${'<i class="fa-solid fa-star"></i>'.repeat(ratingNum)}</div><p class="text-xs text-slate-700 italic font-bold">"${o.review || ''}"</p></div>` : '' }
                             </div>
 
-                            <div class="shrink-0 w-full lg:w-56 bg-slate-50/80 p-5 rounded-2xl border border-slate-100 flex flex-col items-center justify-center shadow-sm h-full">
+                            <div class="shrink-0 w-full lg:w-48 bg-slate-50/80 p-4 rounded-2xl border border-slate-100 flex flex-col items-center justify-center shadow-sm h-full">
                                 <p class="text-[10px] text-slate-500 uppercase font-black tracking-widest mb-1 flex items-center gap-1.5"><i class="fa-solid ${String(o.payment||'').includes('Online')?'fa-building-columns text-indigo-400':'fa-money-bill text-emerald-400'}"></i> ${o.payment || 'N/A'}</p>
-                                <p class="text-brand font-black text-2xl mb-5">৳ ${Number(o.total||0).toLocaleString('en-US')}</p>
+                                <p class="text-brand font-black text-2xl mb-4">৳ ${Number(o.total||0).toLocaleString('en-US')}</p>
                                 
-                                <div class="w-full flex flex-col gap-3 mt-auto">
+                                <div class="w-full flex flex-col gap-2 mt-auto">
                                     ${getStatusDropdown(o.id, o.status)}
-                                    ${estTimeBtn}
-                                    <button onclick="deleteOrder('${o.id}')" class="w-full bg-red-50 text-red-600 hover:bg-red-100 border border-red-100 px-4 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-wide transition-colors flex items-center justify-center gap-2 shadow-sm">
-                                        <i class="fa-solid fa-trash"></i> ডিলিট করুন
-                                    </button>
+                                    <div class="flex gap-2 w-full mt-1">
+                                        ${estTimeBtn}
+                                        <button onclick="deleteOrder('${o.id}')" class="flex-1 bg-white hover:bg-red-50 text-red-500 border border-slate-200 hover:border-red-200 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-wide transition-colors flex items-center justify-center shadow-sm">
+                                            <i class="fa-solid fa-trash"></i> ডিলিট
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1084,26 +991,31 @@
                 } else {
                     tableContainer.innerHTML = filtered.map(o => `
                         <tr class="hover:bg-slate-50/80 transition-colors group">
-                            <td class="p-5 align-top border-l-4 border-transparent group-hover:border-brand transition-colors">
+                            <td class="p-4 align-top border-l-4 border-transparent group-hover:border-brand transition-colors">
                                 <span class="font-black text-slate-800 bg-slate-100 px-2.5 py-1 rounded-lg border border-slate-200 text-xs block mb-2 w-max shadow-sm">${o.id}</span>
                                 <span class="text-[10px] text-slate-500 font-bold block bg-white border border-slate-100 px-2 py-1 rounded w-max"><i class="fa-regular fa-clock mr-1"></i>${formatEnglishDate(o.time)}</span>
                             </td>
-                            <td class="p-5 align-top">
-                                <span class="font-black text-slate-800 flex items-center gap-2 mb-1.5"><i class="fa-solid fa-user text-slate-400 text-[10px]"></i> ${o.name || 'Guest'}</span>
-                                <a href="tel:${o.phone}" class="text-xs text-blue-600 hover:text-blue-800 font-bold flex items-center gap-1 mb-1.5"><i class="fa-solid fa-phone text-[10px]"></i> ${o.phone}</a>
-                                <p class="text-[10px] text-slate-500 font-bold max-w-[150px] whitespace-normal"><i class="fa-solid fa-location-dot text-slate-400"></i> ${o.address || 'ঠিকানা নেই'}</p>
+                            <td class="p-4 align-top">
+                                <div class="flex items-center gap-2 mb-1.5">
+                                    <span class="font-black text-slate-800 flex items-center gap-1.5"><i class="fa-solid fa-user text-slate-400 text-[10px]"></i> ${o.name || 'Guest'}</span>
+                                    <button onclick="openNotifModal('${o.phone}')" class="text-[9px] bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded shadow-sm font-black hover:bg-blue-100"><i class="fa-solid fa-paper-plane"></i></button>
+                                </div>
+                                <a href="tel:${o.phone}" class="text-xs text-green-600 hover:text-green-800 font-bold flex items-center gap-1 mb-1.5"><i class="fa-solid fa-phone text-[10px]"></i> ${o.phone}</a>
+                                <p class="text-[10px] text-slate-500 font-bold max-w-[150px] whitespace-normal leading-tight"><i class="fa-solid fa-location-dot text-slate-400"></i> ${o.address || 'ঠিকানা নেই'}</p>
                             </td>
-                            <td class="p-5 align-top">
-                                <div class="bg-gradient-to-r from-slate-50 to-white p-3 rounded-xl border border-slate-100 text-xs shadow-sm max-w-[250px] whitespace-normal">${formatOrderDetails(o.details)}</div>
+                            <td class="p-4 align-top">
+                                <div class="bg-gradient-to-r from-slate-50 to-white p-3 rounded-xl border border-slate-100 text-xs shadow-sm max-w-[250px] whitespace-normal leading-relaxed">${formatOrderDetails(o.details)}</div>
                             </td>
-                            <td class="p-5 align-top">
+                            <td class="p-4 align-top">
                                 <span class="font-black text-brand text-lg block mb-1">৳ ${Number(o.total||0).toLocaleString('en-US')}</span>
                                 <span class="text-[9px] px-2 py-1 rounded bg-slate-100 text-slate-600 font-black uppercase tracking-widest border border-slate-200 shadow-sm">${o.payment || 'COD'}</span>
                             </td>
-                            <td class="p-5 align-top w-56">
-                                ${getStatusDropdown(o.id, o.status)}
-                                ${o.status !== 'সম্পূর্ণ হয়েছে' && o.status !== 'ডেলিভারি সম্পন্ন হয়েছে' && !String(o.status||'').includes('বাতিল') ? `<button onclick="promptStatusUpdate('${o.id}')" class="w-full mt-2 bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 px-2 py-2 rounded-lg text-[9px] font-black transition-colors flex items-center justify-center gap-1"><i class="fa-solid fa-stopwatch text-blue-500"></i> ডেলিভারি সময়</button>` : ''}
-                                <button onclick="deleteOrder('${o.id}')" class="w-full mt-2 text-red-500 hover:text-red-600 font-black text-[10px]"><i class="fa-solid fa-trash"></i> ডিলিট</button>
+                            <td class="p-4 align-top w-56">
+                                <div class="mb-2 shadow-sm rounded-xl overflow-hidden">${getStatusDropdown(o.id, o.status)}</div>
+                                <div class="flex gap-2">
+                                    ${o.status !== 'সম্পূর্ণ হয়েছে' && o.status !== 'ডেলিভারি সম্পন্ন হয়েছে' && !String(o.status||'').includes('বাতিল') ? `<button onclick="promptStatusUpdate('${o.id}')" class="flex-1 bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 py-2 rounded-lg text-[9px] font-black transition-colors flex items-center justify-center gap-1"><i class="fa-solid fa-stopwatch text-blue-500"></i> সময়</button>` : ''}
+                                    <button onclick="deleteOrder('${o.id}')" class="flex-1 bg-red-50 text-red-500 border border-red-100 hover:bg-red-100 py-2 rounded-lg text-[9px] font-black transition-colors flex items-center justify-center gap-1"><i class="fa-solid fa-trash"></i> ডিলিট</button>
+                                </div>
                             </td>
                         </tr>
                     `).join('');
@@ -1149,7 +1061,7 @@
             } catch(e){} showLoading(false); 
         }
 
-        // নতুন ডিলিট ফাংশন (অর্ডার ডিলিট)
+        // ডিলিট ফাংশন (অর্ডার ডিলিট)
         async function deleteOrder(id) {
             if(!confirm("আপনি কি নিশ্চিত যে এই অর্ডারটি ডিলিট করতে চান? (এটি আর ফেরত পাওয়া যাবে না)")) return;
             showLoading(true);
@@ -1237,14 +1149,17 @@
                         let blockBadge = c.blocked ? '<span class="bg-slate-800 text-white px-2 py-0.5 rounded-md text-[9px] font-black shadow-sm uppercase"><i class="fa-solid fa-lock text-[8px]"></i> Blocked</span>' : '';
 
                         html += `
-                            <div onclick="viewCustomer('${c.phone}')" class="p-5 bg-white border border-slate-100 rounded-2xl premium-shadow premium-shadow-hover cursor-pointer relative overflow-hidden group">
-                                <div class="absolute right-0 top-0 w-1.5 h-full bg-slate-200 group-hover:bg-brand transition-colors"></div>
-                                <div class="flex justify-between items-start mb-4 border-b border-slate-50 pb-3">
+                            <div class="p-5 bg-white border border-slate-100 rounded-2xl premium-shadow premium-shadow-hover relative overflow-hidden group">
+                                <div class="absolute right-0 top-0 w-1.5 h-full bg-slate-200 group-hover:bg-brand transition-colors cursor-pointer" onclick="viewCustomer('${c.phone}')"></div>
+                                <div class="flex justify-between items-start mb-4 border-b border-slate-50 pb-3 cursor-pointer" onclick="viewCustomer('${c.phone}')">
                                     <h4 class="font-black text-sm text-slate-800 line-clamp-1 flex-1 pr-2 flex flex-col gap-1.5"><span class="flex items-center gap-2"><div class="w-6 h-6 bg-indigo-50 text-indigo-500 rounded-md flex items-center justify-center text-[10px]"><i class="fa-solid fa-user"></i></div> ${c.name || 'Guest'}</span> <div class="flex gap-1">${tagBadge}${blockBadge}</div></h4>
                                     <span class="text-[10px] bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-lg font-black text-slate-600 shadow-sm shrink-0">${c.totalOrders.toLocaleString('en-US')} অর্ডার</span>
                                 </div>
-                                <p class="text-xs text-slate-600 font-bold flex items-center mb-2"><i class="fa-solid fa-phone mr-2 text-blue-400 bg-blue-50 w-5 h-5 flex items-center justify-center rounded"></i> ${c.phone}</p>
-                                <p class="text-[10px] text-slate-500 font-bold line-clamp-1 flex items-center"><i class="fa-solid fa-location-dot mr-2 text-brand bg-brand/10 w-5 h-5 flex items-center justify-center rounded"></i> ${c.address || 'ঠিকানা নেই'}</p>
+                                <div class="flex justify-between items-center mb-2">
+                                    <p class="text-xs text-slate-600 font-bold flex items-center cursor-pointer" onclick="viewCustomer('${c.phone}')"><i class="fa-solid fa-phone mr-2 text-blue-400 bg-blue-50 w-5 h-5 flex items-center justify-center rounded"></i> ${c.phone}</p>
+                                    <button onclick="openNotifModal('${c.phone}')" class="text-[9px] bg-blue-50 text-blue-600 border border-blue-100 hover:bg-blue-100 transition-colors px-2 py-1 rounded shadow-sm font-black"><i class="fa-solid fa-paper-plane mr-1"></i> মেসেজ</button>
+                                </div>
+                                <p class="text-[10px] text-slate-500 font-bold line-clamp-1 flex items-center cursor-pointer" onclick="viewCustomer('${c.phone}')"><i class="fa-solid fa-location-dot mr-2 text-brand bg-brand/10 w-5 h-5 flex items-center justify-center rounded"></i> ${c.address || 'ঠিকানা নেই'}</p>
                             </div>`;
                     });
                     html += `</div></div>`;
@@ -1263,26 +1178,29 @@
             document.getElementById('cp-total-orders').textContent = c.totalOrders.toLocaleString('en-US'); document.getElementById('cp-delivered').textContent = c.delivered.toLocaleString('en-US'); document.getElementById('cp-spent').textContent = `৳ ${c.spent.toLocaleString('en-US')}`;
             document.getElementById('cp-points').textContent = (c.points || 0).toLocaleString('en-US');
             
+            // Set message button action
+            document.getElementById('cp-msg-btn').setAttribute('onclick', `openNotifModal('${phone}'); closeCustomerModal();`);
+
             const btn = document.getElementById('cp-block-btn');
             if(c.blocked) { btn.textContent = "আনব্লক"; btn.className = "text-[10px] font-black px-4 py-2.5 rounded-xl text-white bg-slate-800 hover:bg-slate-900 shadow-sm transition-colors uppercase tracking-wider"; } 
             else { btn.textContent = "ব্লক"; btn.className = "text-[10px] font-black px-4 py-2.5 rounded-xl text-white bg-red-500 hover:bg-red-600 shadow-sm transition-colors uppercase tracking-wider"; }
 
             document.getElementById('cp-order-history').innerHTML = c.orders.map(o => `
-                <div class="bg-white border border-slate-100 p-5 rounded-[1.5rem] premium-shadow hover:border-brand/30 transition-colors">
-                    <div class="flex justify-between items-start mb-3 border-b border-slate-50 pb-3">
-                        <span class="font-black text-sm text-slate-800 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-200 shadow-sm">${o.id}</span>
-                        <span class="text-[9px] px-2.5 py-1 rounded-md border font-black shadow-sm uppercase tracking-widest ${getStatusClass(o.status)}">${o.status || 'পেন্ডিং'}</span>
+                <div class="bg-white border border-slate-100 p-4 rounded-2xl premium-shadow hover:border-brand/30 transition-colors">
+                    <div class="flex justify-between items-start mb-3 border-b border-slate-50 pb-2">
+                        <span class="font-black text-sm text-slate-800 bg-slate-50 px-2 py-1 rounded-xl border border-slate-200 shadow-sm">${o.id}</span>
+                        <span class="text-[9px] px-2 py-1 rounded-md border font-black shadow-sm uppercase tracking-widest ${getStatusClass(o.status)}">${o.status || 'পেন্ডিং'}</span>
                     </div>
-                    <p class="text-[10px] text-slate-500 mb-4 font-bold bg-white border border-slate-100 px-2 py-1 inline-block rounded-lg shadow-sm"><i class="fa-regular fa-clock mr-1 text-blue-400"></i>${formatEnglishDate(o.time)}</p>
+                    <p class="text-[9px] text-slate-500 mb-3 font-bold bg-white border border-slate-100 px-2 py-1 inline-block rounded-md shadow-sm"><i class="fa-regular fa-clock mr-1 text-blue-400"></i>${formatEnglishDate(o.time)}</p>
                     
-                    <div class="bg-slate-50 p-3 rounded-xl mb-4 border border-slate-100 relative overflow-hidden">
+                    <div class="bg-slate-50 p-3 rounded-xl mb-3 border border-slate-100 relative overflow-hidden text-[10px]">
                         <div class="absolute left-0 top-0 w-1 h-full bg-brand/30"></div>
                         ${formatOrderDetails(o.details)}
                     </div>
 
-                    <div class="flex justify-between items-end border-t border-slate-50 pt-3">
-                        <p class="text-[10px] text-slate-500 uppercase font-black tracking-widest flex items-center gap-1.5"><span class="w-6 h-6 bg-slate-100 text-slate-500 rounded flex items-center justify-center"><i class="fa-solid ${String(o.payment||'').includes('Online')?'fa-building-columns':'fa-money-bill'}"></i></span> ${o.payment || 'N/A'}</p>
-                        <p class="text-xl font-black text-brand">৳ ${Number(o.total||0).toLocaleString('en-US')}</p>
+                    <div class="flex justify-between items-end border-t border-slate-50 pt-2 mt-auto">
+                        <p class="text-[9px] text-slate-500 uppercase font-black tracking-widest flex items-center gap-1.5"><span class="w-5 h-5 bg-slate-100 text-slate-500 rounded flex items-center justify-center"><i class="fa-solid ${String(o.payment||'').includes('Online')?'fa-building-columns':'fa-money-bill'}"></i></span> ${o.payment || 'N/A'}</p>
+                        <p class="text-base font-black text-brand">৳ ${Number(o.total||0).toLocaleString('en-US')}</p>
                     </div>
                 </div>
             `).join('');
@@ -1319,7 +1237,13 @@
             if(!currentViewedPhone) return;
             if(!confirm("সতর্কতা: এটি এই কাস্টমারের সব ডেটা এবং অর্ডার হিস্ট্রি মুছে ফেলবে। আপনি কি নিশ্চিত?")) return;
             showLoading(true);
-            try { await fetchPost({ action: 'deleteCustomer', phone: currentViewedPhone }); showToast("কাস্টমারের ডেটা মুছে ফেলা হয়েছে।"); closeCustomerModal(); setTimeout(()=>location.reload(), 1000); } catch(e){} showLoading(false);
+            try { 
+                await fetchPost({ action: 'deleteCustomer', phone: currentViewedPhone }); 
+                showToast("কাস্টমারের ডেটা মুছে ফেলা হয়েছে।"); 
+                closeCustomerModal(); 
+                await fetchDashboardData(); // No reload, fetch data directly
+            } catch(e){} 
+            showLoading(false);
         }
 
         // --- MENU MANAGEMENT ---
@@ -1506,9 +1430,9 @@
                 if(data.result === 'success' && data.data && data.data.length > 0) {
                     adminNotifsList = data.data; // গ্লোবাল অ্যারেতে সেভ করা হলো
                     list.innerHTML = adminNotifsList.map(n => `
-                        <div class="border border-slate-100 border-l-4 border-l-blue-500 rounded-[1.5rem] p-6 bg-white premium-shadow premium-shadow-hover transition-all relative overflow-hidden group">
+                        <div class="border border-slate-100 border-l-4 border-l-blue-500 rounded-[1.5rem] p-5 md:p-6 bg-white premium-shadow premium-shadow-hover transition-all relative overflow-hidden group">
                             <div class="absolute right-0 top-0 w-24 h-24 bg-blue-50 rounded-bl-full -z-0 opacity-50 group-hover:scale-110 transition-transform"></div>
-                            <span class="absolute top-5 right-5 bg-white px-3 py-1.5 rounded-lg text-blue-600 border border-blue-100 text-[9px] font-black tracking-widest uppercase shadow-sm z-10"><i class="fa-solid fa-paper-plane mr-1"></i> ${n.target === 'All' ? 'সবাইকে' : n.target}</span>
+                            <span class="absolute top-4 right-4 md:top-5 md:right-5 bg-white px-3 py-1.5 rounded-lg text-blue-600 border border-blue-100 text-[9px] font-black tracking-widest uppercase shadow-sm z-10"><i class="fa-solid fa-paper-plane mr-1"></i> ${n.target === 'All' ? 'সবাইকে' : n.target}</span>
                             
                             <div class="relative z-10 pr-24 mb-3">
                                 <h4 class="font-black text-lg text-slate-800 leading-tight">${n.title}</h4>
@@ -1521,8 +1445,8 @@
                             <div class="flex justify-between items-center pt-4 border-t border-slate-50 relative z-10">
                                 <span class="text-[10px] text-slate-400 font-bold bg-slate-50 px-2.5 py-1 rounded-md border border-slate-100"><i class="fa-regular fa-clock mr-1 text-blue-400"></i>${formatEnglishDate(n.date)}</span>
                                 <div class="flex gap-2">
-                                    <button onclick="editNotif('${n.id}')" class="text-blue-600 bg-blue-50 hover:bg-blue-100 border border-blue-100 w-9 h-9 rounded-xl font-bold transition-all shadow-sm flex items-center justify-center"><i class="fa-solid fa-pen"></i></button>
-                                    <button onclick="deleteNotification('${n.id}')" class="text-red-600 bg-red-50 hover:bg-red-100 border border-red-100 w-9 h-9 rounded-xl font-bold transition-all shadow-sm flex items-center justify-center"><i class="fa-solid fa-trash"></i></button>
+                                    <button onclick="editNotif('${n.id}')" class="text-[10px] text-blue-600 bg-blue-50 hover:bg-blue-100 border border-blue-100 px-3 py-1.5 rounded-lg font-black transition-all shadow-sm flex items-center justify-center uppercase"><i class="fa-solid fa-pen mr-1"></i> এডিট</button>
+                                    <button onclick="deleteNotification('${n.id}')" class="text-[10px] text-red-600 bg-red-50 hover:bg-red-100 border border-red-100 px-3 py-1.5 rounded-lg font-black transition-all shadow-sm flex items-center justify-center uppercase"><i class="fa-solid fa-trash mr-1"></i> ডিলিট</button>
                                 </div>
                             </div>
                         </div>
@@ -1538,8 +1462,26 @@
             else { wrapper.classList.add('hidden'); input.required = false; }
         });
         
-        function openNotifModal() { document.getElementById('notif-form').reset(); document.getElementById('n-id').value = ''; document.getElementById('notif-target').value = 'All'; document.getElementById('notif-phone-wrapper').classList.add('hidden'); document.getElementById('notif-custom-phone').required = false; document.getElementById('notif-modal-title').textContent="মেসেজ পাঠান"; document.getElementById('notif-submit-btn').textContent = "মেসেজ পাঠান"; document.getElementById('notif-modal').style.display='flex'; }
+        function openNotifModal(phone = '') { 
+            document.getElementById('notif-form').reset(); 
+            document.getElementById('n-id').value = ''; 
+            if (phone) {
+                document.getElementById('notif-target').value = 'custom'; 
+                document.getElementById('notif-custom-phone').value = phone;
+                document.getElementById('notif-phone-wrapper').classList.remove('hidden'); 
+                document.getElementById('notif-custom-phone').required = true; 
+            } else {
+                document.getElementById('notif-target').value = 'All'; 
+                document.getElementById('notif-phone-wrapper').classList.add('hidden'); 
+                document.getElementById('notif-custom-phone').required = false; 
+            }
+            document.getElementById('notif-modal-title').textContent="মেসেজ পাঠান"; 
+            document.getElementById('notif-submit-btn').textContent = "মেসেজ পাঠান"; 
+            document.getElementById('notif-modal').style.display='flex'; 
+        }
+
         function closeNotifModal() { document.getElementById('notif-modal').style.display='none'; }
+
         function editNotif(id) {
             const n = adminNotifsList.find(x => x.id === id); if(!n) return;
             document.getElementById('n-id').value = n.id; document.getElementById('notif-title').value = n.title; document.getElementById('notif-message').value = n.message;
@@ -1591,8 +1533,18 @@
             showLoading(false); 
         }
 
-        // Start
-        if(isLoggedIn) { document.getElementById('admin-login').style.display = 'none'; fetchDashboardData(); }
+        // Start Program
+        if(isLoggedIn) { 
+            document.getElementById('admin-login').style.display = 'none'; 
+            
+            // Set Default dates for "All Orders" (Yesterday to Today)
+            const today = new Date();
+            const yesterday = new Date(today); yesterday.setDate(yesterday.getDate() - 1);
+            document.getElementById('filter-order-date-to').value = formatEnglishDate(today, true);
+            document.getElementById('filter-order-date-from').value = formatEnglishDate(yesterday, true);
+            
+            fetchDashboardData(); 
+        }
     </script>
 </body>
-</html>
+    </html>
