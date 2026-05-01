@@ -27,11 +27,11 @@
     <!-- ADMIN LOGIN MODAL -->
     <div id="admin-login" class="fixed inset-0 bg-slate-900/90 z-[9999] flex items-center justify-center p-4 backdrop-blur-sm">
         <div class="bg-white p-8 rounded-[2rem] premium-shadow w-full max-w-sm text-center border border-slate-100 transform transition-all">
-            <div class="w-24 h-24 bg-gradient-to-tr from-brand/20 to-orange-100 text-brand rounded-full flex items-center justify-center text-5xl mx-auto mb-6 shadow-inner"><i class="fa-solid fa-fire-burner"></i></div>
-            <h2 class="text-3xl font-black mb-2 text-slate-800 tracking-tight">Sherpur Cloud Kitchen</h2>
+            <div class="w-24 h-24 bg-[#fff5ec] text-[#ea580c] rounded-full flex items-center justify-center text-5xl mx-auto mb-6 shadow-inner border border-orange-100"><i class="fa-solid fa-fire-burner"></i></div>
+            <h2 class="text-3xl font-black mb-1 text-slate-900 tracking-tight">Sherpur <span class="text-[#ea580c]">Cloud</span> Kitchen</h2>
             <p class="text-sm font-bold text-slate-500 mb-8">অ্যাডমিন প্যানেলে প্রবেশ করুন</p>
             <input type="password" id="admin-pass" placeholder="পাসওয়ার্ড দিন..." class="w-full px-5 py-4 border-2 border-slate-100 rounded-2xl mb-6 outline-none focus:border-brand focus:ring-4 focus:ring-brand/10 font-bold text-center text-lg bg-slate-50 transition-all shadow-sm">
-            <button onclick="checkAdmin()" id="admin-login-btn" class="w-full bg-slate-900 text-white font-black py-4 rounded-2xl hover:bg-brand transition-all shadow-lg hover:shadow-brand/30">লগিন করুন <i class="fa-solid fa-arrow-right ml-2"></i></button>
+            <button onclick="checkAdmin()" id="admin-login-btn" class="w-full bg-[#ea580c] text-white font-black py-4 rounded-2xl hover:bg-[#c2410c] transition-all shadow-lg hover:shadow-orange-500/30 text-lg uppercase tracking-wide">লগিন করুন <i class="fa-solid fa-arrow-right ml-2"></i></button>
         </div>
     </div>
 
@@ -50,9 +50,9 @@
         
         <nav id="nav-links" class="flex-1 px-4 py-6 space-y-2 overflow-y-auto text-sm custom-scroll font-bold">
             <a href="#" onclick="switchTab('dashboard')" id="tab-btn-dashboard" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-white bg-brand/10 border border-brand/20 shadow-sm transition-all"><i class="fa-solid fa-chart-pie w-5 text-brand"></i> ড্যাশবোর্ড</a>
-            <a href="#" onclick="switchTab('orders')" id="tab-btn-orders" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-all"><i class="fa-solid fa-clipboard-list w-5"></i> সকল অর্ডার <span id="pending-badge" class="ml-auto bg-brand text-[10px] font-black px-2 py-0.5 rounded-md hidden text-white shadow-sm">0</span></a>
+            <a href="#" onclick="switchTab('orders')" id="tab-btn-orders" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-all"><i class="fa-solid fa-clipboard-list w-5"></i> সকল অর্ডার <span id="sidebar-pending-badge" class="ml-auto bg-brand text-[10px] font-black px-2 py-0.5 rounded-md hidden text-white shadow-sm">0</span></a>
             <a href="#" onclick="switchTab('menu')" id="tab-btn-menu" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-all"><i class="fa-solid fa-burger w-5"></i> মেনু কন্ট্রোল</a>
-            <a href="#" onclick="switchTab('offers')" id="tab-btn-offers" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-all"><i class="fa-solid fa-tags w-5"></i> স্পেশাল অফার</a>
+            <a href="#" onclick="switchTab('offers')" id="tab-btn-offers" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-all"><i class="fa-solid fa-tags w-5"></i> স্পেশাল অফার ব্যানার</a>
             <a href="#" onclick="switchTab('areas')" id="tab-btn-areas" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-all"><i class="fa-solid fa-map-location-dot w-5"></i> ডেলিভারি এরিয়া</a>
             <a href="#" onclick="switchTab('customers')" id="tab-btn-customers" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-all"><i class="fa-solid fa-users w-5"></i> কাস্টমার লিস্ট</a>
             <a href="#" onclick="switchTab('notifications')" id="tab-btn-notifications" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-all"><i class="fa-solid fa-bullhorn w-5"></i> নোটিফিকেশন</a>
@@ -76,29 +76,32 @@
             
             <!-- TAB: DASHBOARD -->
             <div id="tab-dashboard" class="tab-content active">
-                <div class="flex flex-col lg:flex-row justify-between lg:items-center gap-4 mb-8">
+                <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 mb-8">
                     <div>
                         <h2 class="text-3xl font-black text-slate-800 tracking-tight">ড্যাশবোর্ড (আজকের দিন)</h2>
                         <p class="text-sm font-bold text-slate-500 mt-1">আপনার রেস্টুরেন্টের আজকের সার্বিক অবস্থা</p>
                     </div>
                     
                     <div class="flex items-center gap-2">
-                        <button onclick="fetchDashboardData()" class="bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-100 px-6 py-2.5 rounded-xl text-sm font-black shadow-sm transition-colors w-full sm:w-auto"><i class="fa-solid fa-rotate-right mr-1"></i> রিফ্রেশ করুন</button>
+                        <button onclick="fetchDashboardData()" class="bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-100 px-6 py-2.5 rounded-xl text-sm font-black shadow-sm transition-colors w-full sm:w-auto"><i class="fa-solid fa-rotate-right mr-1"></i> ডেটা রিফ্রেশ</button>
                     </div>
                 </div>
                 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 mb-8">
                     <div class="bg-white p-5 md:p-6 rounded-[1.5rem] premium-shadow premium-shadow-hover transition-all relative overflow-hidden group"><div class="absolute right-0 top-0 w-1.5 h-full bg-indigo-500 group-hover:w-2 transition-all"></div><div class="w-10 h-10 rounded-full bg-indigo-50 text-indigo-500 flex items-center justify-center mb-3"><i class="fa-solid fa-box-open text-lg"></i></div><p class="text-slate-500 text-[10px] font-black mb-1 uppercase tracking-wider">আজকের মোট অর্ডার</p><h3 id="stat-orders-today" class="text-2xl md:text-3xl font-black text-slate-800">0</h3></div>
-                    <div class="bg-white p-5 md:p-6 rounded-[1.5rem] premium-shadow premium-shadow-hover transition-all relative overflow-hidden group"><div class="absolute right-0 top-0 w-1.5 h-full bg-brand group-hover:w-2 transition-all"></div><div class="w-10 h-10 rounded-full bg-orange-50 text-brand flex items-center justify-center mb-3"><i class="fa-solid fa-bolt text-lg"></i></div><p class="text-slate-500 text-[10px] font-black mb-1 uppercase tracking-wider">আজকের সেলস</p><h3 id="stat-sales-today" class="text-2xl md:text-3xl font-black text-brand">৳ 0</h3></div>
-                    <div class="bg-white p-5 md:p-6 rounded-[1.5rem] premium-shadow premium-shadow-hover transition-all relative overflow-hidden group"><div class="absolute right-0 top-0 w-1.5 h-full bg-emerald-500 group-hover:w-2 transition-all"></div><div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center mb-3"><i class="fa-solid fa-check-double text-lg"></i></div><p class="text-slate-500 text-[10px] font-black mb-1 uppercase tracking-wider">ডেলিভারি সম্পন্ন</p><h3 id="stat-delivered-today" class="text-2xl md:text-3xl font-black text-slate-800">0</h3></div>
-                    <div class="bg-white p-5 md:p-6 rounded-[1.5rem] premium-shadow premium-shadow-hover transition-all relative overflow-hidden group"><div class="absolute right-0 top-0 w-1.5 h-full bg-red-500 group-hover:w-2 transition-all"></div><div class="w-10 h-10 rounded-full bg-red-50 text-red-500 flex items-center justify-center mb-3"><i class="fa-solid fa-ban text-lg"></i></div><p class="text-slate-500 text-[10px] font-black mb-1 uppercase tracking-wider">ক্যানসেল হয়েছে</p><h3 id="stat-cancelled-today" class="text-2xl md:text-3xl font-black text-slate-800">0</h3></div>
+                    
+                    <div onclick="goToPendingOrders()" class="bg-white p-5 md:p-6 rounded-[1.5rem] premium-shadow premium-shadow-hover transition-all relative overflow-hidden group cursor-pointer border border-transparent hover:border-brand/20"><div class="absolute right-0 top-0 w-1.5 h-full bg-brand group-hover:w-2 transition-all"></div><div class="w-10 h-10 rounded-full bg-orange-50 text-brand flex items-center justify-center mb-3"><i class="fa-solid fa-clock text-lg"></i></div><p class="text-slate-500 text-[10px] font-black mb-1 uppercase tracking-wider">মোট পেন্ডিং অর্ডার</p><h3 id="stat-pending-today" class="text-2xl md:text-3xl font-black text-brand">0</h3></div>
+                    
+                    <div class="bg-white p-5 md:p-6 rounded-[1.5rem] premium-shadow premium-shadow-hover transition-all relative overflow-hidden group"><div class="absolute right-0 top-0 w-1.5 h-full bg-emerald-500 group-hover:w-2 transition-all"></div><div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center mb-3"><i class="fa-solid fa-check-double text-lg"></i></div><p class="text-slate-500 text-[10px] font-black mb-1 uppercase tracking-wider">আজ ডেলিভারি সম্পন্ন</p><h3 id="stat-delivered-today" class="text-2xl md:text-3xl font-black text-slate-800">0</h3></div>
+                    
+                    <div class="bg-white p-5 md:p-6 rounded-[1.5rem] premium-shadow premium-shadow-hover transition-all relative overflow-hidden group"><div class="absolute right-0 top-0 w-1.5 h-full bg-red-500 group-hover:w-2 transition-all"></div><div class="w-10 h-10 rounded-full bg-red-50 text-red-500 flex items-center justify-center mb-3"><i class="fa-solid fa-ban text-lg"></i></div><p class="text-slate-500 text-[10px] font-black mb-1 uppercase tracking-wider">আজ ক্যানসেল হয়েছে</p><h3 id="stat-cancelled-today" class="text-2xl md:text-3xl font-black text-slate-800">0</h3></div>
                 </div>
 
                 <div class="flex items-center gap-3 mb-6 mt-10">
                     <div class="w-8 h-8 rounded-lg bg-brand/10 text-brand flex items-center justify-center"><i class="fa-solid fa-clock-rotate-left"></i></div>
                     <h3 class="text-xl font-black text-slate-800 tracking-tight">সাম্প্রতিক অর্ডারসমূহ</h3>
                 </div>
-                <div class="space-y-4" id="recent-orders-list"></div>
+                <div class="space-y-5" id="recent-orders-list"></div>
             </div>
 
             <!-- TAB: ALL ORDERS -->
@@ -109,31 +112,31 @@
                         <p class="text-sm font-bold text-slate-500 mt-1">অর্ডার ম্যানেজমেন্ট ও ফিল্টারিং</p>
                     </div>
                     <div class="flex gap-2 sm:gap-3 items-center w-full md:w-auto">
-                        <button onclick="toggleOrderView()" class="flex-1 md:flex-none bg-white border border-slate-200 text-slate-700 px-5 py-2.5 rounded-xl text-sm font-black premium-shadow hover:bg-slate-50 transition-all"><i class="fa-solid fa-list mr-2 text-brand"></i> ভিউ</button>
-                        <button onclick="exportOrdersCSV()" class="flex-1 md:flex-none bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white px-5 py-2.5 rounded-xl text-sm font-black shadow-lg shadow-emerald-500/30 transition-all whitespace-nowrap"><i class="fa-solid fa-file-excel mr-1"></i> এক্সপোর্ট</button>
+                        <button onclick="exportOrdersCSV()" class="flex-1 md:flex-none bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white px-6 py-3 rounded-xl text-sm font-black shadow-lg shadow-emerald-500/30 transition-all whitespace-nowrap"><i class="fa-solid fa-file-excel mr-1"></i> এক্সপোর্ট (CSV)</button>
                     </div>
                 </div>
                 
-                <div class="bg-white p-5 rounded-[1.5rem] border border-slate-100 premium-shadow mb-8">
+                <div class="bg-white p-5 md:p-6 rounded-[1.5rem] border border-slate-100 premium-shadow mb-8">
                     <div class="grid grid-cols-2 md:grid-cols-6 gap-3">
                         <div class="col-span-2 md:col-span-2 relative">
                             <i class="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
-                            <input type="text" id="order-search" oninput="filterOrders()" placeholder="আইডি, আইটেম বা নাম..." class="w-full pl-10 pr-4 py-3 border-2 border-slate-100 rounded-xl text-sm outline-none focus:border-brand focus:ring-4 focus:ring-brand/10 bg-slate-50 font-bold transition-all">
+                            <input type="text" id="order-search" oninput="filterOrders()" placeholder="আইডি, আইটেম বা নাম..." class="w-full pl-10 pr-4 py-3.5 border-2 border-slate-100 rounded-xl text-sm outline-none focus:border-brand focus:ring-4 focus:ring-brand/10 bg-slate-50 font-bold transition-all">
+                            <button onclick="document.getElementById('order-search').value=''; filterOrders();" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-red-500 transition-colors bg-white w-7 h-7 rounded-lg shadow-sm border border-slate-100 flex items-center justify-center" title="Clear"><i class="fa-solid fa-times"></i></button>
                         </div>
                         <div class="col-span-1 md:col-span-1">
-                            <input type="date" id="filter-order-date-from" onchange="filterOrders()" class="w-full px-3 py-3 border-2 border-slate-100 rounded-xl text-xs bg-slate-50 font-bold outline-none focus:border-brand transition-all text-slate-600" title="From Date">
+                            <input type="date" id="filter-order-date-from" onchange="filterOrders()" class="w-full px-3 py-3.5 border-2 border-slate-100 rounded-xl text-xs bg-slate-50 font-bold outline-none focus:border-brand transition-all text-slate-600" title="From Date">
                         </div>
                         <div class="col-span-1 md:col-span-1">
-                            <input type="date" id="filter-order-date-to" onchange="filterOrders()" class="w-full px-3 py-3 border-2 border-slate-100 rounded-xl text-xs bg-slate-50 font-bold outline-none focus:border-brand transition-all text-slate-600" title="To Date">
+                            <input type="date" id="filter-order-date-to" onchange="filterOrders()" class="w-full px-3 py-3.5 border-2 border-slate-100 rounded-xl text-xs bg-slate-50 font-bold outline-none focus:border-brand transition-all text-slate-600" title="To Date">
                         </div>
                         <div class="col-span-1 md:col-span-1 relative">
-                            <select id="filter-order-area" onchange="filterOrders()" class="w-full px-3 py-3 border-2 border-slate-100 rounded-xl text-xs bg-slate-50 font-black outline-none focus:border-brand transition-all appearance-none cursor-pointer">
+                            <select id="filter-order-area" onchange="filterOrders()" class="w-full px-3 py-3.5 border-2 border-slate-100 rounded-xl text-xs bg-slate-50 font-black outline-none focus:border-brand transition-all appearance-none cursor-pointer">
                                 <option value="">সকল এরিয়া</option>
                             </select>
                             <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 pointer-events-none text-[10px]"></i>
                         </div>
                         <div class="col-span-1 md:col-span-1 relative">
-                            <select id="filter-status" onchange="filterOrders()" class="w-full px-3 py-3 border-2 border-slate-100 rounded-xl text-xs bg-slate-50 font-black outline-none focus:border-brand transition-all appearance-none cursor-pointer">
+                            <select id="filter-status" onchange="filterOrders()" class="w-full px-3 py-3.5 border-2 border-slate-100 rounded-xl text-xs bg-slate-50 font-black outline-none focus:border-brand transition-all appearance-none cursor-pointer">
                                 <option value="">সকল স্ট্যাটাস</option><option value="পেন্ডিং">পেন্ডিং</option><option value="খাবার তৈরি হচ্ছে">তৈরি হচ্ছে</option><option value="ডেলিভারি ম্যান পথে আছে">পথে আছে</option><option value="সম্পূর্ণ হয়েছে">সম্পূর্ণ</option><option value="বাতিল">বাতিল</option>
                             </select>
                             <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 pointer-events-none text-[10px]"></i>
@@ -141,24 +144,7 @@
                     </div>
                 </div>
 
-                <div id="orders-view-container">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="all-orders-grid"></div>
-                    <div class="hidden bg-white border border-slate-100 rounded-[1.5rem] premium-shadow overflow-hidden" id="all-orders-table-wrapper">
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-left text-sm whitespace-nowrap">
-                                <thead class="bg-slate-50/80 border-b border-slate-100 font-black text-slate-600 uppercase tracking-wider text-[11px]">
-                                    <tr>
-                                        <th class="p-4">অর্ডার আইডি ও সময়</th>
-                                        <th class="p-4">কাস্টমার</th>
-                                        <th class="p-4 w-1/3">খাবারের বিবরণ</th>
-                                        <th class="p-4 text-center">স্ট্যাটাস ও অ্যাকশন</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="all-orders-table" class="divide-y divide-slate-50/80"></tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                <div id="all-orders-grid" class="grid grid-cols-1 gap-5"></div>
             </div>
 
             <!-- TAB: MENU -->
@@ -166,7 +152,7 @@
                 <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-8">
                     <div>
                         <h2 class="text-3xl font-black text-slate-800 tracking-tight">মেনু কন্ট্রোল</h2>
-                        <p class="text-sm font-bold text-slate-500 mt-1">খাবারের আইটেম ম্যানেজ করুন</p>
+                        <p class="text-sm font-bold text-slate-500 mt-1">খাবারের আইটেম ও রেগুলার অফার ম্যানেজ করুন</p>
                     </div>
                     <button onclick="openMenuModal()" class="bg-gradient-to-r from-brand to-orange-500 text-white px-6 py-3 rounded-xl text-sm font-black shadow-lg shadow-brand/30 hover:shadow-brand/50 hover:-translate-y-0.5 transition-all w-full sm:w-auto"><i class="fa-solid fa-plus mr-2"></i> নতুন আইটেম</button>
                 </div>
@@ -179,10 +165,10 @@
             <div id="tab-offers" class="tab-content">
                 <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-8">
                     <div>
-                        <h2 class="text-3xl font-black text-slate-800 tracking-tight">স্পেশাল অফার</h2>
-                        <p class="text-sm font-bold text-slate-500 mt-1">কাস্টমারদের জন্য আকর্ষণীয় অফার ব্যানার</p>
+                        <h2 class="text-3xl font-black text-slate-800 tracking-tight">স্পেশাল অফার ব্যানার</h2>
+                        <p class="text-sm font-bold text-slate-500 mt-1">হোমপেজের উপরে দেখানো আকর্ষণীয় অফার ব্যানার</p>
                     </div>
-                    <button onclick="openOfferModal()" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-xl text-sm font-black shadow-lg shadow-purple-500/30 hover:-translate-y-0.5 transition-all w-full sm:w-auto"><i class="fa-solid fa-plus mr-2"></i> অফার যোগ করুন</button>
+                    <button onclick="openOfferModal()" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-xl text-sm font-black shadow-lg shadow-purple-500/30 hover:-translate-y-0.5 transition-all w-full sm:w-auto"><i class="fa-solid fa-plus mr-2"></i> ব্যানার যোগ করুন</button>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="admin-offers-grid"></div>
             </div>
@@ -217,12 +203,12 @@
                     </div>
                     <button onclick="exportCustomersCSV()" class="bg-gradient-to-r from-emerald-500 to-green-600 text-white px-5 py-2.5 rounded-xl text-sm font-black shadow-lg shadow-emerald-500/30 transition-all hover:-translate-y-0.5 w-full md:w-auto"><i class="fa-solid fa-file-excel mr-2"></i> এক্সপোর্ট (CSV)</button>
                 </div>
-                <div class="bg-white p-5 rounded-[1.5rem] premium-shadow border border-slate-100 mb-6">
+                <div class="bg-white p-5 md:p-6 rounded-[1.5rem] premium-shadow border border-slate-100 mb-6">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div class="relative md:col-span-2">
                             <i class="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
                             <input type="text" id="cust-search" oninput="renderCustomers()" placeholder="নাম, ফোন নম্বর, ঠিকানা বা খাবার দিয়ে খুঁজুন..." class="w-full pl-10 pr-10 py-3.5 border-2 border-slate-100 rounded-xl text-sm outline-none focus:border-brand focus:ring-4 focus:ring-brand/10 bg-slate-50 font-bold transition-all">
-                            <button onclick="document.getElementById('cust-search').value=''; renderCustomers();" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-red-500 transition-colors" title="Clear"><i class="fa-solid fa-times-circle"></i></button>
+                            <button onclick="document.getElementById('cust-search').value=''; renderCustomers();" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-red-500 transition-colors" title="Clear"><i class="fa-solid fa-times-circle text-lg"></i></button>
                         </div>
                         <div class="relative">
                             <select id="filter-cust-area" onchange="renderCustomers()" class="w-full px-4 py-3.5 border-2 border-slate-100 rounded-xl text-sm bg-slate-50 font-black outline-none focus:border-brand transition-all appearance-none cursor-pointer">
@@ -329,6 +315,20 @@
         </div>
     </main>
 
+    <button onclick="toggleAdminOrderNotif()" class="fixed bottom-6 right-6 md:bottom-10 md:right-10 bg-white border border-slate-200 text-brand premium-shadow w-16 h-16 rounded-full flex items-center justify-center z-[9000] hover:bg-brand hover:text-white hover:scale-105 transition-all group">
+        <i class="fa-solid fa-bell text-2xl group-hover:animate-bounce"></i>
+        <span id="new-order-badge" class="absolute -top-1 -right-1 bg-red-500 text-white text-[11px] font-black h-7 w-7 flex items-center justify-center rounded-full border-[3px] border-white hidden shadow-sm">0</span>
+    </button>
+
+    <div id="admin-order-notif-panel" class="fixed right-0 top-0 h-full w-80 max-w-full bg-slate-50 shadow-2xl z-[10000] transform translate-x-full transition-transform duration-300 flex flex-col border-l border-slate-200">
+        <div class="p-6 bg-slate-900 text-white flex justify-between items-center shadow-md relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-brand/20 to-transparent"></div>
+            <h3 class="font-black text-sm tracking-widest uppercase relative z-10 flex items-center gap-2"><div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center"><i class="fa-solid fa-bell text-brand text-lg"></i></div> আজকের অর্ডার</h3>
+            <button onclick="toggleAdminOrderNotif()" class="relative z-10 text-slate-400 hover:text-white w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center transition-colors"><i class="fa-solid fa-times"></i></button>
+        </div>
+        <div id="admin-order-notif-list" class="flex-1 overflow-y-auto bg-slate-50 p-4 space-y-4 custom-scroll"></div>
+    </div>
+
     <!-- CUSTOMER PROFILE MODAL -->
     <div id="customer-modal" class="fixed inset-0 bg-slate-900/80 z-[9999] hidden items-center justify-center p-4 backdrop-blur-sm">
         <div class="bg-slate-50 rounded-[2rem] shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden animate-[fadeIn_0.3s_ease-out] border border-slate-200">
@@ -386,7 +386,15 @@
                         <div>
                             <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2 block pl-1">ক্যাটাগরি</label>
                             <input list="category-options" id="m-cat" required placeholder="সিলেক্ট/টাইপ করুন" class="w-full px-5 py-3.5 border-2 border-slate-100 bg-slate-50 rounded-xl text-sm outline-none focus:border-brand focus:ring-4 focus:ring-brand/10 font-bold transition-all">
-                            <datalist id="category-options"><option value="মেইন ডিশ"><option value="সাইড ডিশ"><option value="ফাস্ট ফুড"><option value="ডেজার্ট"><option value="কেইক"><option value="SPC কিচেন স্পেশাল"></datalist>
+                            <datalist id="category-options">
+                                <option value="মেইন ডিশ">
+                                <option value="সাইড ডিশ">
+                                <option value="ফাস্ট ফুড">
+                                <option value="ডেজার্ট">
+                                <option value="কেইক">
+                                <option value="SPC কিচেন স্পেশাল">
+                                <option value="অফার">
+                            </datalist>
                         </div>
                     </div>
                     
@@ -472,24 +480,8 @@
         </div>
     </div>
     
-    <!-- ORDER DETAILS STATUS MODAL (For Estimated Time) -->
-    <div id="status-modal" class="fixed inset-0 bg-slate-900/80 z-[9999] hidden items-center justify-center p-4 backdrop-blur-sm">
-        <div class="bg-white rounded-[2rem] shadow-2xl w-full max-w-xs flex flex-col p-6 text-center border border-slate-100 animate-[fadeIn_0.2s_ease-out] max-h-[90vh]">
-            <div class="w-16 h-16 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center text-2xl mx-auto mb-4 shadow-inner border border-blue-100"><i class="fa-solid fa-clock-rotate-left"></i></div>
-            <h3 class="font-black text-xl mb-1 text-slate-800 tracking-tight">অর্ডার আপডেট</h3>
-            <p class="text-[11px] text-slate-500 mb-5 font-bold bg-slate-50 p-2 rounded-lg">আনুমানিক ডেলিভারি সময় সেট করুন</p>
-            <input type="hidden" id="status-order-id">
-            <input type="hidden" id="status-val">
-            <input type="text" id="status-est-time" placeholder="যেমন: 40-50 mins" class="w-full px-4 py-3 border-2 border-slate-100 bg-slate-50 rounded-xl text-base outline-none focus:border-brand focus:ring-4 focus:ring-brand/10 mb-6 font-black text-center transition-all">
-            <div class="flex gap-3">
-                <button onclick="document.getElementById('status-modal').style.display='none'" class="flex-1 bg-slate-100 text-slate-600 hover:bg-slate-200 py-3 rounded-xl font-black text-sm transition-colors border border-slate-200">বাতিল</button>
-                <button onclick="confirmStatusUpdate()" class="flex-1 bg-brand hover:bg-brand-dark text-white py-3 rounded-xl font-black text-sm shadow-lg shadow-brand/30 transition-all">কনফার্ম</button>
-            </div>
-        </div>
-    </div>
-
     <!-- TOAST -->
-    <div id="toast" class="fixed top-5 md:top-8 left-1/2 transform -translate-x-1/2 text-white px-6 py-3 rounded-2xl shadow-2xl flex items-center justify-center gap-3 z-[10000] transition-all duration-400 opacity-0 -translate-y-10 pointer-events-none text-sm font-black tracking-wide border border-white/20 w-11/12 max-w-sm md:w-auto"></div>
+    <div id="toast" class="fixed top-5 md:top-8 left-1/2 transform -translate-x-1/2 text-white px-8 py-4 rounded-2xl shadow-2xl flex items-center justify-center gap-3 z-[10000] transition-all duration-400 opacity-0 -translate-y-10 pointer-events-none text-sm font-black tracking-wide border border-white/20 w-11/12 max-w-sm md:w-auto"></div>
 
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbx1iS5LzeMkdknCemQk7ihWCLqoeUWcgirTDBRJKahmyMo442W1EOi6fEwYSS9N25GE/exec';
@@ -503,6 +495,12 @@
         let isOrderTableView = false; 
         
         const fetchPost = async (data) => await fetch(scriptURL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) });
+
+        function formatPhone(p) {
+            let str = String(p).trim();
+            if(str.length === 10 && str.startsWith('1')) return '0' + str;
+            return str;
+        }
 
         function toggleSidebar() {
             const sb = document.getElementById('sidebar'); const overlay = document.getElementById('sidebar-overlay');
@@ -594,7 +592,6 @@
             return itemTags;
         }
 
-        // --- DASHBOARD DATA & FILTERS ---
         function getSalesStats() {
             let todayOrders = 0, todaySales = 0, deliveredToday = 0, cancelledToday = 0; 
             const now = new Date();
@@ -620,20 +617,21 @@
         function processCustomers() {
             customerMap = {};
             allOrders.forEach(o => {
-                if(!customerMap[o.phone]) customerMap[o.phone] = { name: o.name || 'Guest', phone: o.phone, totalOrders: 0, delivered: 0, cancelled: 0, spent: 0, orders: [], tag: '', points: 0, blocked: false, address: '' };
-                customerMap[o.phone].totalOrders++; customerMap[o.phone].orders.push(o);
-                customerMap[o.phone].address = o.address || customerMap[o.phone].address; 
+                let p = formatPhone(o.phone);
+                if(!customerMap[p]) customerMap[p] = { name: o.name || 'Guest', phone: p, totalOrders: 0, delivered: 0, cancelled: 0, spent: 0, orders: [], tag: '', points: 0, blocked: false, address: '' };
+                customerMap[p].totalOrders++; customerMap[p].orders.push(o);
+                customerMap[p].address = o.address || customerMap[p].address; 
                 
                 const statusStr = String(o.status || '');
-                if(statusStr === 'সম্পূর্ণ হয়েছে' || statusStr === 'ডেলিভারি সম্পন্ন হয়েছে') { customerMap[o.phone].delivered++; customerMap[o.phone].spent += Number(o.total||0); }
-                if(statusStr.includes('বাতিল')) customerMap[o.phone].cancelled++;
+                if(statusStr === 'সম্পূর্ণ হয়েছে' || statusStr === 'ডেলিভারি সম্পন্ন হয়েছে') { customerMap[p].delivered++; customerMap[p].spent += Number(o.total||0); }
+                if(statusStr.includes('বাতিল')) customerMap[p].cancelled++;
                 
-                if(!customerMap[o.phone].name || customerMap[o.phone].name === 'Guest') customerMap[o.phone].name = o.name || 'Guest';
+                if(!customerMap[p].name || customerMap[p].name === 'Guest') customerMap[p].name = o.name || 'Guest';
                 
-                if(storeData.tags && storeData.tags[o.phone]) {
-                    customerMap[o.phone].tag = storeData.tags[o.phone].tag || '';
-                    customerMap[o.phone].points = storeData.tags[o.phone].points || 0;
-                    customerMap[o.phone].blocked = storeData.tags[o.phone].blocked || false;
+                if(storeData.tags && storeData.tags[p]) {
+                    customerMap[p].tag = storeData.tags[p].tag || '';
+                    customerMap[p].points = storeData.tags[p].points || 0;
+                    customerMap[p].blocked = storeData.tags[p].blocked || false;
                 }
             });
         }
@@ -656,6 +654,12 @@
             if(custAreaFilter) custAreaFilter.innerHTML = options;
         }
 
+        function goToPendingOrders() {
+            switchTab('orders');
+            document.getElementById('filter-status').value = 'পেন্ডিং';
+            filterOrders();
+        }
+
         async function fetchDashboardData() { 
             showLoading(true); 
             try { 
@@ -664,7 +668,7 @@
                     allOrders = data.data.filter(o => o && o.id); 
                     allOrders.sort((a,b) => parseOrderTime(b.time) - parseOrderTime(a.time)); 
                 } 
-                await fetchStoreData(); // Load areas and other settings
+                await fetchStoreData(); 
                 populateAreaFilters();
                 
                 processCustomers(); 
@@ -672,10 +676,7 @@
                 renderDashboard(); 
                 renderOrders(); 
                 updateAdminNotifications(); 
-            } catch(e){
-                showToast("ডেটা লোড করতে সমস্যা হয়েছে!", true);
-                console.error(e);
-            } 
+            } catch(e){} 
             showLoading(false); 
         }
 
@@ -700,6 +701,8 @@
             });
 
             const list = document.getElementById('admin-order-notif-list'); const badge = document.getElementById('new-order-badge');
+            const sidebarBadge = document.getElementById('sidebar-pending-badge');
+            
             let unreadCount = 0; let html = '';
 
             if(todaysOrders.length === 0) { html = '<div class="h-full flex flex-col items-center justify-center text-slate-400 opacity-60 pt-10"><i class="fa-solid fa-box-open text-5xl mb-3"></i><p class="text-sm font-black mt-2">আজ কোনো নতুন অর্ডার নেই</p></div>'; } 
@@ -717,7 +720,7 @@
                         </div>
                         <div class="flex justify-between items-center mb-3">
                             <p class="text-xs font-black text-slate-800 flex items-center cursor-pointer" onclick="viewOrderFromNotif('${o.id}')"><i class="fa-solid fa-user text-slate-400 mr-2"></i> ${o.name || 'Guest'}</p>
-                            <button onclick="openNotifModal('${o.phone}')" class="text-[9px] bg-blue-50 text-blue-600 border border-blue-100 px-2 py-1 rounded shadow-sm font-black"><i class="fa-solid fa-paper-plane mr-1"></i> মেসেজ</button>
+                            <button onclick="openNotifModal('${formatPhone(o.phone)}')" class="text-[9px] bg-blue-50 text-blue-600 border border-blue-100 px-2 py-1 rounded shadow-sm font-black hover:bg-blue-100"><i class="fa-solid fa-paper-plane mr-1"></i> মেসেজ</button>
                         </div>
                         
                         <div class="text-[10px] text-slate-600 bg-slate-50 p-2 rounded-xl border border-slate-100 cursor-pointer hover:bg-slate-100 transition-colors" onclick="let el = this.querySelector('.order-text'); el.classList.toggle('line-clamp-2');" title="বিস্তারিত দেখতে ক্লিক করুন">
@@ -728,6 +731,10 @@
                 });
             }
             list.innerHTML = html; badge.textContent = unreadCount.toLocaleString('en-US'); badge.style.display = unreadCount > 0 ? 'flex' : 'none';
+            
+            const pendingOverall = allOrders.filter(o => (o.status || '') === 'পেন্ডিং').length;
+            sidebarBadge.textContent = pendingOverall.toLocaleString('en-US'); 
+            sidebarBadge.style.display = pendingOverall > 0 ? 'inline' : 'none';
         }
 
         function toggleAdminOrderNotif() {
@@ -777,12 +784,9 @@
                 const elCancelled = document.getElementById('stat-cancelled-today');
                 if(elCancelled) elCancelled.textContent = sales.cancelledToday.toLocaleString('en-US');
 
-                const pending = allOrders.filter(o => (o.status || '') === 'পেন্ডিং').length;
-                const elPending = document.getElementById('pending-badge');
-                if(elPending) {
-                    elPending.textContent = pending.toLocaleString('en-US'); 
-                    elPending.style.display = pending > 0 ? 'inline' : 'none';
-                }
+                const pendingOverall = allOrders.filter(o => (o.status || '') === 'পেন্ডিং').length;
+                const elPendingToday = document.getElementById('stat-pending-today');
+                if(elPendingToday) elPendingToday.textContent = pendingOverall.toLocaleString('en-US');
 
                 const validRecentOrders = allOrders.filter(o => !String(o.details || '').includes('[SPECIAL FOOD REQUEST]'));
                 const container = document.getElementById('recent-orders-list');
@@ -792,107 +796,15 @@
                 if(validRecentOrders.length === 0) { 
                     container.innerHTML = '<p class="text-sm text-slate-500 bg-white p-8 rounded-[1.5rem] border border-slate-100 text-center font-bold">সাম্প্রতিক কোনো অর্ডার নেই</p>'; 
                 } else {
-                    container.innerHTML = validRecentOrders.slice(0, 8).map(o => {
-                        const cInfo = customerMap[o.phone]; let tagHtml = '';
-                        if(cInfo && cInfo.tag === 'Good') tagHtml = '<span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-md text-[9px] font-black border border-emerald-200 ml-1 shadow-sm uppercase"><i class="fa-solid fa-star text-[8px] mr-0.5"></i>Good</span>';
-                        else if(cInfo && cInfo.tag === 'Bad') tagHtml = '<span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-md text-[9px] font-black border border-red-200 ml-1 shadow-sm uppercase"><i class="fa-solid fa-thumbs-down text-[8px] mr-0.5"></i>Bad</span>';
-                        else if(cInfo && cInfo.tag === 'Regular') tagHtml = '<span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-md text-[9px] font-black border border-blue-200 ml-1 shadow-sm uppercase"><i class="fa-solid fa-award text-[8px] mr-0.5"></i>Reg</span>';
-                        
-                        let borderLeftClass = "border-l-4 border-l-orange-400";
-                        if(o.status === 'খাবার তৈরি হচ্ছে') borderLeftClass = "border-l-4 border-l-blue-400";
-                        else if(o.status === 'ডেলিভারি ম্যান পথে আছে') borderLeftClass = "border-l-4 border-l-indigo-400";
-                        else if(o.status === 'সম্পূর্ণ হয়েছে' || o.status === 'ডেলিভারি সম্পন্ন হয়েছে') borderLeftClass = "border-l-4 border-l-emerald-400";
-                        else if(String(o.status||'').includes('বাতিল')) borderLeftClass = "border-l-4 border-l-red-400";
-
-                        // Hide Est Time if done or canceled
-                        let estTimeBtn = '';
-                        if(o.status !== 'সম্পূর্ণ হয়েছে' && o.status !== 'ডেলিভারি সম্পন্ন হয়েছে' && !String(o.status||'').includes('বাতিল')) {
-                            estTimeBtn = `<button onclick="promptStatusUpdate('${o.id}')" class="flex-1 bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 px-3 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-wide transition-colors flex items-center justify-center gap-1.5 shadow-sm">
-                                            <i class="fa-solid fa-stopwatch text-blue-500"></i> ডেলিভারি সময়
-                                        </button>`;
-                        }
-
-                        return `
-                        <div class="bg-white p-4 md:p-5 rounded-[1.5rem] border border-slate-100 premium-shadow premium-shadow-hover transition-all duration-300 flex flex-col lg:flex-row justify-between lg:items-center gap-4 relative overflow-hidden ${borderLeftClass}">
-                            
-                            <div class="flex-1">
-                                <div class="flex flex-wrap items-center gap-3 mb-3 border-b border-slate-50 pb-2">
-                                    <span class="font-black text-sm text-slate-800 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-200 shadow-sm"><i class="fa-solid fa-hashtag text-brand mr-1"></i>${o.id}</span>
-                                    <span class="text-[10px] text-blue-700 bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-xl font-black shadow-sm"><i class="fa-regular fa-clock mr-1 text-blue-500"></i>${formatEnglishDate(o.time)}</span>
-                                </div>
-                                
-                                <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
-                                    <div class="flex items-center gap-2 bg-slate-50 border border-slate-100 px-3.5 py-1.5 rounded-xl shadow-sm">
-                                        <div class="w-6 h-6 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center text-[10px]"><i class="fa-solid fa-user"></i></div>
-                                        <span class="text-xs text-slate-800 font-black">${o.name || 'Guest'}</span>
-                                        ${tagHtml}
-                                    </div>
-                                    <div class="flex gap-2">
-                                        <button onclick="openNotifModal('${o.phone}')" class="flex items-center gap-1.5 bg-blue-50 border border-blue-100 hover:bg-blue-100 transition-colors px-3 py-1.5 rounded-xl text-[10px] font-black text-blue-700 shadow-sm"><i class="fa-solid fa-paper-plane"></i> মেসেজ</button>
-                                        <a href="tel:${o.phone}" class="flex items-center gap-1.5 bg-green-50 border border-green-100 hover:bg-green-100 transition-colors px-3 py-1.5 rounded-xl text-[10px] font-black text-green-700 shadow-sm"><i class="fa-solid fa-phone"></i> কল</a>
-                                    </div>
-                                </div>
-                                
-                                <div class="text-[11px] text-slate-700 bg-gradient-to-r from-orange-50/50 to-slate-50/50 p-3 rounded-xl border border-orange-100/50 shadow-sm relative overflow-hidden mt-2">
-                                    <div class="absolute left-0 top-0 w-1 h-full bg-brand/40"></div>
-                                    ${formatOrderDetails(o.details)}
-                                </div>
-                            </div>
-
-                            <div class="shrink-0 w-full lg:w-56 bg-slate-50/80 p-4 rounded-2xl border border-slate-100 flex flex-col items-center lg:items-end justify-center shadow-sm">
-                                <p class="text-[10px] text-slate-500 uppercase font-black tracking-widest mb-1">মোট বিল</p>
-                                <p class="text-brand font-black text-2xl mb-4">৳ ${Number(o.total||0).toLocaleString('en-US')}</p>
-                                
-                                <div class="w-full flex flex-col gap-2">
-                                    ${getStatusDropdown(o.id, o.status)}
-                                    <div class="flex gap-2 w-full">
-                                        ${estTimeBtn}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>`
-                    }).join('');
+                    container.innerHTML = validRecentOrders.slice(0, 8).map(o => buildOrderCardHTML(o)).join('');
                 }
             } catch(e) { console.error('Dashboard render error:', e); }
-        }
-
-        function toggleOrderView() {
-            isOrderTableView = !isOrderTableView;
-            document.getElementById('all-orders-grid').classList.toggle('hidden', isOrderTableView);
-            document.getElementById('all-orders-table-wrapper').classList.toggle('hidden', !isOrderTableView);
-            renderOrders();
-        }
-
-        function getStatusDropdown(id, currentStatus) {
-            const statuses = ['পেন্ডিং', 'খাবার তৈরি হচ্ছে', 'ডেলিভারি ম্যান পথে আছে', 'সম্পূর্ণ হয়েছে', 'বাতিল'];
-            let mappedStatus = currentStatus || 'পেন্ডিং';
-            if(mappedStatus === 'Pending') mappedStatus = 'পেন্ডিং';
-            if(mappedStatus === 'Processing') mappedStatus = 'খাবার তৈরি হচ্ছে';
-            if(mappedStatus === 'On the way') mappedStatus = 'ডেলিভারি ম্যান পথে আছে';
-            if(mappedStatus === 'Delivered') mappedStatus = 'সম্পূর্ণ হয়েছে';
-            if(mappedStatus.includes('বাতিল') || mappedStatus === 'Cancelled') mappedStatus = 'বাতিল';
-
-            let options = statuses.map(s => `<option value="${s}" ${s === mappedStatus ? 'selected' : ''}>${s}</option>`).join('');
-            
-            let bgClass = "bg-orange-50 text-orange-800 border-orange-200 focus:ring-orange-200"; 
-            if(mappedStatus === 'খাবার তৈরি হচ্ছে') bgClass = "bg-blue-50 text-blue-800 border-blue-200 focus:ring-blue-200";
-            if(mappedStatus === 'ডেলিভারি ম্যান পথে আছে') bgClass = "bg-indigo-50 text-indigo-800 border-indigo-200 focus:ring-indigo-200";
-            if(mappedStatus === 'সম্পূর্ণ হয়েছে') bgClass = "bg-emerald-50 text-emerald-800 border-emerald-200 focus:ring-emerald-200";
-            if(mappedStatus === 'বাতিল') bgClass = "bg-red-50 text-red-800 border-red-200 focus:ring-red-200";
-
-            return `<div class="relative w-full">
-                        <select onchange="updateStatus('${id}', this.value)" class="w-full text-xs border border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 font-black transition-all cursor-pointer appearance-none shadow-sm ${bgClass}">
-                            ${options}
-                        </select>
-                        <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 transform -translate-y-1/2 text-[10px] pointer-events-none opacity-60"></i>
-                    </div>`;
         }
 
         // --- ORDERS MANAGEMENT ---
         function renderOrders() {
             try {
                 const gridContainer = document.getElementById('all-orders-grid');
-                const tableContainer = document.getElementById('all-orders-table');
                 
                 const search = document.getElementById('order-search').value.toLowerCase();
                 const fStatus = document.getElementById('filter-status').value;
@@ -901,7 +813,7 @@
                 const dateTo = document.getElementById('filter-order-date-to').value;
                 
                 let filtered = allOrders; 
-                if(search) filtered = filtered.filter(o => String(o.id||'').toLowerCase().includes(search) || String(o.phone||'').includes(search) || String(o.name||'').toLowerCase().includes(search) || String(o.address||'').toLowerCase().includes(search) || String(o.details||'').toLowerCase().includes(search));
+                if(search) filtered = filtered.filter(o => String(o.id||'').toLowerCase().includes(search) || formatPhone(o.phone).includes(search) || String(o.name||'').toLowerCase().includes(search) || String(o.address||'').toLowerCase().includes(search));
                 if(fStatus) filtered = filtered.filter(o => o.status === fStatus || (fStatus==='বাতিল' && String(o.status||'').includes('বাতিল')));
                 if(fArea) filtered = filtered.filter(o => String(o.address||'').includes(`[${fArea}]`));
                 
@@ -917,109 +829,11 @@
                 if(filtered.length === 0) { 
                     const noDataHtml = '<div class="text-center py-16 col-span-full text-sm text-slate-500 bg-white border border-slate-100 rounded-[1.5rem] font-bold w-full"><i class="fa-solid fa-box-open text-5xl mb-4 text-slate-300 block"></i> কোনো অর্ডার পাওয়া যায়নি</div>';
                     gridContainer.innerHTML = noDataHtml; 
-                    tableContainer.innerHTML = `<tr><td colspan="5" class="p-10">${noDataHtml}</td></tr>`;
                     return; 
                 }
 
-                if(!isOrderTableView) {
-                    gridContainer.innerHTML = filtered.map(o => {
-                        const ratingNum = Math.max(0, parseInt(o.rating) || 0);
-                        const cInfo = customerMap[o.phone]; let tagHtml = '';
-                        if(cInfo && cInfo.tag === 'Good') tagHtml = '<span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-md text-[9px] font-black border border-emerald-200 ml-1 shadow-sm uppercase"><i class="fa-solid fa-star text-[8px] mr-0.5"></i>Good</span>';
-                        else if(cInfo && cInfo.tag === 'Bad') tagHtml = '<span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-md text-[9px] font-black border border-red-200 ml-1 shadow-sm uppercase"><i class="fa-solid fa-thumbs-down text-[8px] mr-0.5"></i>Bad</span>';
-                        else if(cInfo && cInfo.tag === 'Regular') tagHtml = '<span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-md text-[9px] font-black border border-blue-200 ml-1 shadow-sm uppercase"><i class="fa-solid fa-award text-[8px] mr-0.5"></i>Reg</span>';
-                        
-                        let borderLeftClass = "border-l-4 border-l-orange-400";
-                        if(o.status === 'খাবার তৈরি হচ্ছে') borderLeftClass = "border-l-4 border-l-blue-400";
-                        else if(o.status === 'ডেলিভারি ম্যান পথে আছে') borderLeftClass = "border-l-4 border-l-indigo-400";
-                        else if(o.status === 'সম্পূর্ণ হয়েছে' || o.status === 'ডেলিভারি সম্পন্ন হয়েছে') borderLeftClass = "border-l-4 border-l-emerald-400";
-                        else if(String(o.status||'').includes('বাতিল')) borderLeftClass = "border-l-4 border-l-red-400";
-
-                        let estTimeBtn = '';
-                        if(o.status !== 'সম্পূর্ণ হয়েছে' && o.status !== 'ডেলিভারি সম্পন্ন হয়েছে' && !String(o.status||'').includes('বাতিল')) {
-                            estTimeBtn = `<button onclick="promptStatusUpdate('${o.id}')" class="flex-1 bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 px-3 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-wide transition-colors flex items-center justify-center gap-1.5 shadow-sm">
-                                            <i class="fa-solid fa-stopwatch text-blue-500"></i> সময় দিন
-                                        </button>`;
-                        }
-
-                        return `
-                        <div class="bg-white p-4 md:p-5 rounded-[1.5rem] border border-slate-100 premium-shadow premium-shadow-hover transition-all duration-300 flex flex-col lg:flex-row justify-between lg:items-center gap-4 relative overflow-hidden ${borderLeftClass}">
-                            
-                            <div class="flex-1">
-                                <div class="flex flex-wrap items-center gap-3 mb-3 border-b border-slate-50 pb-2">
-                                    <span class="font-black text-sm text-slate-800 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-200 shadow-sm"><i class="fa-solid fa-hashtag text-brand mr-1"></i>${o.id}</span>
-                                    <span class="text-[10px] text-blue-700 bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-xl font-black shadow-sm"><i class="fa-regular fa-clock mr-1 text-blue-500"></i>${formatEnglishDate(o.time)}</span>
-                                </div>
-                                
-                                <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
-                                    <div class="flex items-center gap-2 bg-slate-50 border border-slate-100 px-3.5 py-1.5 rounded-xl shadow-sm">
-                                        <div class="w-6 h-6 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center text-[10px]"><i class="fa-solid fa-user"></i></div>
-                                        <span class="text-xs text-slate-800 font-black">${o.name || 'Guest'}</span>
-                                        ${tagHtml}
-                                    </div>
-                                    <div class="flex gap-2">
-                                        <button onclick="openNotifModal('${o.phone}')" class="flex items-center gap-1.5 bg-blue-50 border border-blue-100 hover:bg-blue-100 transition-colors px-3 py-1.5 rounded-xl text-[10px] font-black text-blue-700 shadow-sm"><i class="fa-solid fa-paper-plane"></i> মেসেজ</button>
-                                        <a href="tel:${o.phone}" class="flex items-center gap-1.5 bg-green-50 border border-green-100 hover:bg-green-100 transition-colors px-3 py-1.5 rounded-xl text-[10px] font-black text-green-700 shadow-sm"><i class="fa-solid fa-phone"></i> কল</a>
-                                    </div>
-                                </div>
-                                <div class="text-[10px] text-slate-600 mb-2 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100 font-bold inline-flex items-center gap-2"><i class="fa-solid fa-location-dot text-slate-400"></i> ${o.address || 'ঠিকানা নেই'}</div>
-                                
-                                <div class="text-[11px] text-slate-700 bg-gradient-to-r from-orange-50/50 to-slate-50/50 p-3 rounded-xl border border-orange-100/50 shadow-sm relative overflow-hidden mt-1">
-                                    <div class="absolute left-0 top-0 w-1 h-full bg-brand/40"></div>
-                                    ${formatOrderDetails(o.details)}
-                                </div>
-                                
-                                ${ ratingNum > 0 ? `<div class="bg-yellow-50/50 p-3 rounded-xl border border-yellow-200 mt-3 shadow-sm relative overflow-hidden"><div class="absolute left-0 top-0 w-1 h-full bg-yellow-400"></div><p class="text-[9px] font-black text-yellow-700 uppercase tracking-widest mb-1 flex items-center gap-1"><i class="fa-solid fa-star text-[10px]"></i> কাস্টমার রিভিউ</p><div class="text-yellow-500 text-xs mb-1">${'<i class="fa-solid fa-star"></i>'.repeat(ratingNum)}</div><p class="text-xs text-slate-700 italic font-bold">"${o.review || ''}"</p></div>` : '' }
-                            </div>
-
-                            <div class="shrink-0 w-full lg:w-48 bg-slate-50/80 p-4 rounded-2xl border border-slate-100 flex flex-col items-center justify-center shadow-sm h-full">
-                                <p class="text-[10px] text-slate-500 uppercase font-black tracking-widest mb-1 flex items-center gap-1.5"><i class="fa-solid ${String(o.payment||'').includes('Online')?'fa-building-columns text-indigo-400':'fa-money-bill text-emerald-400'}"></i> ${o.payment || 'N/A'}</p>
-                                <p class="text-brand font-black text-2xl mb-4">৳ ${Number(o.total||0).toLocaleString('en-US')}</p>
-                                
-                                <div class="w-full flex flex-col gap-2 mt-auto">
-                                    ${getStatusDropdown(o.id, o.status)}
-                                    <div class="flex gap-2 w-full mt-1">
-                                        ${estTimeBtn}
-                                        <button onclick="deleteOrder('${o.id}')" class="flex-1 bg-white hover:bg-red-50 text-red-500 border border-slate-200 hover:border-red-200 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-wide transition-colors flex items-center justify-center shadow-sm">
-                                            <i class="fa-solid fa-trash"></i> ডিলিট
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    `;}).join('');
-                } else {
-                    tableContainer.innerHTML = filtered.map(o => `
-                        <tr class="hover:bg-slate-50/80 transition-colors group">
-                            <td class="p-4 align-top border-l-4 border-transparent group-hover:border-brand transition-colors">
-                                <span class="font-black text-slate-800 bg-slate-100 px-2.5 py-1 rounded-lg border border-slate-200 text-xs block mb-2 w-max shadow-sm">${o.id}</span>
-                                <span class="text-[10px] text-slate-500 font-bold block bg-white border border-slate-100 px-2 py-1 rounded w-max"><i class="fa-regular fa-clock mr-1"></i>${formatEnglishDate(o.time)}</span>
-                            </td>
-                            <td class="p-4 align-top">
-                                <div class="flex items-center gap-2 mb-1.5">
-                                    <span class="font-black text-slate-800 flex items-center gap-1.5"><i class="fa-solid fa-user text-slate-400 text-[10px]"></i> ${o.name || 'Guest'}</span>
-                                    <button onclick="openNotifModal('${o.phone}')" class="text-[9px] bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded shadow-sm font-black hover:bg-blue-100"><i class="fa-solid fa-paper-plane"></i></button>
-                                </div>
-                                <a href="tel:${o.phone}" class="text-xs text-green-600 hover:text-green-800 font-bold flex items-center gap-1 mb-1.5"><i class="fa-solid fa-phone text-[10px]"></i> ${o.phone}</a>
-                                <p class="text-[10px] text-slate-500 font-bold max-w-[150px] whitespace-normal leading-tight"><i class="fa-solid fa-location-dot text-slate-400"></i> ${o.address || 'ঠিকানা নেই'}</p>
-                            </td>
-                            <td class="p-4 align-top">
-                                <div class="bg-gradient-to-r from-slate-50 to-white p-3 rounded-xl border border-slate-100 text-xs shadow-sm max-w-[250px] whitespace-normal leading-relaxed">${formatOrderDetails(o.details)}</div>
-                            </td>
-                            <td class="p-4 align-top">
-                                <span class="font-black text-brand text-lg block mb-1">৳ ${Number(o.total||0).toLocaleString('en-US')}</span>
-                                <span class="text-[9px] px-2 py-1 rounded bg-slate-100 text-slate-600 font-black uppercase tracking-widest border border-slate-200 shadow-sm">${o.payment || 'COD'}</span>
-                            </td>
-                            <td class="p-4 align-top w-56">
-                                <div class="mb-2 shadow-sm rounded-xl overflow-hidden">${getStatusDropdown(o.id, o.status)}</div>
-                                <div class="flex gap-2">
-                                    ${o.status !== 'সম্পূর্ণ হয়েছে' && o.status !== 'ডেলিভারি সম্পন্ন হয়েছে' && !String(o.status||'').includes('বাতিল') ? `<button onclick="promptStatusUpdate('${o.id}')" class="flex-1 bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 py-2 rounded-lg text-[9px] font-black transition-colors flex items-center justify-center gap-1"><i class="fa-solid fa-stopwatch text-blue-500"></i> সময়</button>` : ''}
-                                    <button onclick="deleteOrder('${o.id}')" class="flex-1 bg-red-50 text-red-500 border border-red-100 hover:bg-red-100 py-2 rounded-lg text-[9px] font-black transition-colors flex items-center justify-center gap-1"><i class="fa-solid fa-trash"></i> ডিলিট</button>
-                                </div>
-                            </td>
-                        </tr>
-                    `).join('');
-                }
+                gridContainer.innerHTML = filtered.map(o => buildOrderCardHTML(o)).join('');
+                
             } catch(e) { console.error('Orders render error:', e); }
         }
         
@@ -1033,35 +847,96 @@
             return 'text-orange-700 bg-orange-50 border-orange-200'; 
         }
 
-        function promptStatusUpdate(id) {
-            const o = allOrders.find(x => x.id === id); if(!o) return;
-            document.getElementById('status-order-id').value = id;
-            document.getElementById('status-val').value = o.status || 'পেন্ডিং';
-            document.getElementById('status-est-time').value = o.estimatedTime || '';
-            document.getElementById('status-modal').style.display = 'flex';
-        }
-        
-        async function updateStatus(id, newStatus) { 
-            document.getElementById('status-order-id').value = id; document.getElementById('status-val').value = newStatus;
-            confirmStatusUpdate();
+        // শেয়ার করা কম্প্যাক্ট অর্ডার কার্ড টেমপ্লেট
+        function buildOrderCardHTML(o) {
+            const ratingNum = Math.max(0, parseInt(o.rating) || 0);
+            const pPhone = formatPhone(o.phone);
+            const cInfo = customerMap[pPhone]; let tagHtml = '';
+            
+            if(cInfo && cInfo.tag === 'Good') tagHtml = '<span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-md text-[9px] font-black border border-emerald-200 ml-1 shadow-sm uppercase"><i class="fa-solid fa-star text-[8px] mr-0.5"></i>Good</span>';
+            else if(cInfo && cInfo.tag === 'Bad') tagHtml = '<span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-md text-[9px] font-black border border-red-200 ml-1 shadow-sm uppercase"><i class="fa-solid fa-thumbs-down text-[8px] mr-0.5"></i>Bad</span>';
+            else if(cInfo && cInfo.tag === 'Regular') tagHtml = '<span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-md text-[9px] font-black border border-blue-200 ml-1 shadow-sm uppercase"><i class="fa-solid fa-award text-[8px] mr-0.5"></i>Reg</span>';
+            
+            let borderLeftClass = "border-l-4 border-l-orange-400";
+            if(o.status === 'খাবার তৈরি হচ্ছে') borderLeftClass = "border-l-4 border-l-blue-400";
+            else if(o.status === 'ডেলিভারি ম্যান পথে আছে') borderLeftClass = "border-l-4 border-l-indigo-400";
+            else if(o.status === 'সম্পূর্ণ হয়েছে' || o.status === 'ডেলিভারি সম্পন্ন হয়েছে') borderLeftClass = "border-l-4 border-l-emerald-400";
+            else if(String(o.status||'').includes('বাতিল')) borderLeftClass = "border-l-4 border-l-red-400";
+
+            return `
+            <div class="bg-white rounded-[1.2rem] border border-slate-200 shadow-sm mb-4 relative overflow-hidden ${borderLeftClass} hover:shadow-md transition-shadow flex flex-col">
+                <div class="bg-slate-50 border-b border-slate-100 px-4 py-3 flex justify-between items-center shrink-0">
+                    <div class="flex items-center gap-3">
+                        <span class="font-black text-slate-800 text-sm bg-white border border-slate-200 px-2.5 py-1 rounded-lg shadow-sm">#${o.id}</span>
+                        <span class="text-[10px] text-slate-500 font-bold"><i class="fa-regular fa-clock text-blue-400 mr-1"></i> ${formatEnglishDate(o.time)}</span>
+                    </div>
+                    <span class="text-[9px] px-2.5 py-1 rounded-md border font-black shadow-sm uppercase tracking-widest ${getStatusClass(o.status)}">${String(o.status||'').includes('বাতিল') ? 'বাতিল' : o.status}</span>
+                </div>
+                
+                <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4 flex-1">
+                    <div class="flex flex-col justify-center">
+                        <div class="flex items-center gap-2 mb-1.5">
+                            <i class="fa-solid fa-user text-slate-400 text-xs w-4"></i>
+                            <span class="text-sm font-black text-slate-700">${o.name || 'Guest'}</span>
+                            ${tagHtml}
+                            <button onclick="openNotifModal('${pPhone}')" class="bg-blue-50 border border-blue-100 text-blue-600 px-2 py-0.5 rounded text-[10px] font-black hover:bg-blue-100 transition-colors ml-auto shadow-sm"><i class="fa-solid fa-paper-plane mr-1"></i> মেসেজ</button>
+                        </div>
+                        <div class="flex items-center gap-2 mb-1.5">
+                            <i class="fa-solid fa-phone text-slate-400 text-xs w-4"></i>
+                            <a href="tel:${pPhone}" class="text-xs font-bold text-blue-600 hover:underline">${pPhone}</a>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-slate-400 text-xs mt-0.5 w-4"></i>
+                            <span class="text-[11px] font-bold text-slate-600 leading-tight">${o.address || 'ঠিকানা নেই'}</span>
+                        </div>
+                        ${ ratingNum > 0 ? `<div class="mt-3 bg-yellow-50/50 p-2 rounded-lg border border-yellow-100 text-[10px] font-bold text-slate-700"><div class="text-yellow-500 text-xs mb-1">${'<i class="fa-solid fa-star"></i>'.repeat(ratingNum)}</div>"${o.review || ''}"</div>` : '' }
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-orange-50/50 to-slate-50/50 border border-orange-100/50 rounded-xl p-3 text-xs text-slate-700 shadow-sm relative overflow-hidden flex flex-col justify-center">
+                        <div class="absolute left-0 top-0 w-1 h-full bg-brand/40"></div>
+                        <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1.5 block">অর্ডারকৃত খাবার:</span>
+                        <div class="leading-relaxed">${formatOrderDetails(o.details)}</div>
+                    </div>
+                </div>
+                
+                <div class="bg-slate-50/80 border-t border-slate-100 p-4 flex flex-col md:flex-row gap-4 justify-between items-center shrink-0">
+                    <div class="flex flex-col items-center md:items-start shrink-0">
+                        <span class="text-[10px] font-black text-slate-500 uppercase tracking-widest flex items-center gap-1.5"><i class="fa-solid ${String(o.payment||'').includes('Online')?'fa-building-columns text-indigo-400':'fa-money-bill text-emerald-400'}"></i> বিল (${o.payment||'N/A'})</span>
+                        <span class="text-xl font-black text-brand">৳ ${Number(o.total||0).toLocaleString('en-US')}</span>
+                    </div>
+                    
+                    <div class="flex flex-wrap items-center gap-2 w-full md:w-auto mt-2 md:mt-0">
+                        <select id="inline-status-${o.id}" class="px-3 py-2 border-2 border-slate-200 rounded-lg text-xs font-black bg-white focus:border-brand outline-none flex-1 md:flex-none cursor-pointer text-slate-700">
+                            <option value="পেন্ডিং" ${o.status==='পেন্ডিং'?'selected':''}>পেন্ডিং</option>
+                            <option value="খাবার তৈরি হচ্ছে" ${o.status==='খাবার তৈরি হচ্ছে'?'selected':''}>খাবার তৈরি হচ্ছে</option>
+                            <option value="ডেলিভারি ম্যান পথে আছে" ${o.status==='ডেলিভারি ম্যান পথে আছে'?'selected':''}>ডেলিভারিতে</option>
+                            <option value="সম্পূর্ণ হয়েছে" ${o.status==='সম্পূর্ণ হয়েছে'?'selected':''}>সম্পূর্ণ</option>
+                            <option value="বাতিল" ${String(o.status||'').includes('বাতিল')?'selected':''}>বাতিল</option>
+                        </select>
+                        <input type="text" id="inline-est-${o.id}" value="${o.estimatedTime || ''}" placeholder="ডেলিভারি সময়" class="px-3 py-2 border-2 border-slate-200 rounded-lg text-xs font-bold bg-white focus:border-brand outline-none w-28 flex-1 md:flex-none" title="Estimated Time">
+                        
+                        <div class="flex gap-2 w-full md:w-auto">
+                            <button onclick="inlineUpdateStatus('${o.id}')" class="bg-brand text-white px-4 py-2 rounded-lg text-[11px] font-black shadow-sm hover:bg-brand-dark transition-colors flex-1 md:flex-none uppercase tracking-wide"><i class="fa-solid fa-check"></i> সেভ</button>
+                            <button onclick="deleteOrder('${o.id}')" class="bg-white border border-red-200 text-red-500 hover:bg-red-50 px-3 py-2 rounded-lg text-xs font-black shadow-sm transition-colors flex items-center justify-center shrink-0" title="ডিলিট করুন"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
         }
 
-        async function confirmStatusUpdate() {
-            const id = document.getElementById('status-order-id').value;
-            const newStatus = document.getElementById('status-val').value;
-            const estTime = document.getElementById('status-est-time').value;
-            document.getElementById('status-modal').style.display = 'none';
-
-            showLoading(true); 
-            try { 
-                await fetchPost({ action: 'updateOrderStatus', orderId: id, status: newStatus, estimatedTime: estTime }); 
+        async function inlineUpdateStatus(id) {
+            const newStatus = document.getElementById(`inline-status-${id}`).value;
+            const estTime = document.getElementById(`inline-est-${id}`).value;
+            showLoading(true);
+            try {
+                await fetchPost({ action: 'updateOrderStatus', orderId: id, status: newStatus, estimatedTime: estTime });
                 let o = allOrders.find(x=>x.id===id); if(o) { o.status=newStatus; o.estimatedTime=estTime; }
-                showToast("স্ট্যাটাস আপডেট সফল হয়েছে!"); 
+                showToast("স্ট্যাটাস আপডেট সফল হয়েছে!");
                 renderDashboard(); renderOrders(); updateAdminNotifications();
-            } catch(e){} showLoading(false); 
+            } catch(e){ showToast("আপডেট ফেইলড", true); } 
+            showLoading(false);
         }
 
-        // ডিলিট ফাংশন (অর্ডার ডিলিট)
         async function deleteOrder(id) {
             if(!confirm("আপনি কি নিশ্চিত যে এই অর্ডারটি ডিলিট করতে চান? (এটি আর ফেরত পাওয়া যাবে না)")) return;
             showLoading(true);
@@ -1086,7 +961,7 @@
             allOrders.forEach(o => {
                 let items = (o.details||'').replace(/,/g, ' | ').replace(/"/g, '""');
                 let addr = (o.address||'').replace(/,/g, ' - ').replace(/"/g, '""');
-                csv += `${o.id},${formatEnglishDate(o.time)},${o.name||'Guest'},${o.phone},"${addr}","${items}",${o.payment||'N/A'},${o.total||0},${o.status}\n`;
+                csv += `${o.id},${formatEnglishDate(o.time)},${o.name||'Guest'},${formatPhone(o.phone)},"${addr}","${items}",${o.payment||'N/A'},${o.total||0},${o.status}\n`;
             });
             downloadCSV('Orders_Report.csv', csv);
         }
@@ -1149,17 +1024,17 @@
                         let blockBadge = c.blocked ? '<span class="bg-slate-800 text-white px-2 py-0.5 rounded-md text-[9px] font-black shadow-sm uppercase"><i class="fa-solid fa-lock text-[8px]"></i> Blocked</span>' : '';
 
                         html += `
-                            <div class="p-5 bg-white border border-slate-100 rounded-2xl premium-shadow premium-shadow-hover relative overflow-hidden group">
+                            <div class="p-5 bg-white border border-slate-100 rounded-[1.2rem] premium-shadow premium-shadow-hover relative overflow-hidden group">
                                 <div class="absolute right-0 top-0 w-1.5 h-full bg-slate-200 group-hover:bg-brand transition-colors cursor-pointer" onclick="viewCustomer('${c.phone}')"></div>
                                 <div class="flex justify-between items-start mb-4 border-b border-slate-50 pb-3 cursor-pointer" onclick="viewCustomer('${c.phone}')">
                                     <h4 class="font-black text-sm text-slate-800 line-clamp-1 flex-1 pr-2 flex flex-col gap-1.5"><span class="flex items-center gap-2"><div class="w-6 h-6 bg-indigo-50 text-indigo-500 rounded-md flex items-center justify-center text-[10px]"><i class="fa-solid fa-user"></i></div> ${c.name || 'Guest'}</span> <div class="flex gap-1">${tagBadge}${blockBadge}</div></h4>
                                     <span class="text-[10px] bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-lg font-black text-slate-600 shadow-sm shrink-0">${c.totalOrders.toLocaleString('en-US')} অর্ডার</span>
                                 </div>
                                 <div class="flex justify-between items-center mb-2">
-                                    <p class="text-xs text-slate-600 font-bold flex items-center cursor-pointer" onclick="viewCustomer('${c.phone}')"><i class="fa-solid fa-phone mr-2 text-blue-400 bg-blue-50 w-5 h-5 flex items-center justify-center rounded"></i> ${c.phone}</p>
+                                    <p class="text-xs text-slate-600 font-bold flex items-center gap-2"><i class="fa-solid fa-phone text-blue-400 w-4"></i> ${c.phone}</p>
                                     <button onclick="openNotifModal('${c.phone}')" class="text-[9px] bg-blue-50 text-blue-600 border border-blue-100 hover:bg-blue-100 transition-colors px-2 py-1 rounded shadow-sm font-black"><i class="fa-solid fa-paper-plane mr-1"></i> মেসেজ</button>
                                 </div>
-                                <p class="text-[10px] text-slate-500 font-bold line-clamp-1 flex items-center cursor-pointer" onclick="viewCustomer('${c.phone}')"><i class="fa-solid fa-location-dot mr-2 text-brand bg-brand/10 w-5 h-5 flex items-center justify-center rounded"></i> ${c.address || 'ঠিকানা নেই'}</p>
+                                <p class="text-[10px] text-slate-500 font-bold line-clamp-1 flex items-start gap-2 cursor-pointer mt-2" onclick="viewCustomer('${c.phone}')"><i class="fa-solid fa-location-dot text-brand w-4 mt-0.5"></i> <span class="flex-1">${c.address || 'ঠিকানা নেই'}</span></p>
                             </div>`;
                     });
                     html += `</div></div>`;
@@ -1428,17 +1303,17 @@
             try {
                 const res = await fetch(`${scriptURL}?action=getAdminNotifications`); const data = await res.json();
                 if(data.result === 'success' && data.data && data.data.length > 0) {
-                    adminNotifsList = data.data; // গ্লোবাল অ্যারেতে সেভ করা হলো
+                    adminNotifsList = data.data; 
                     list.innerHTML = adminNotifsList.map(n => `
                         <div class="border border-slate-100 border-l-4 border-l-blue-500 rounded-[1.5rem] p-5 md:p-6 bg-white premium-shadow premium-shadow-hover transition-all relative overflow-hidden group">
                             <div class="absolute right-0 top-0 w-24 h-24 bg-blue-50 rounded-bl-full -z-0 opacity-50 group-hover:scale-110 transition-transform"></div>
                             <span class="absolute top-4 right-4 md:top-5 md:right-5 bg-white px-3 py-1.5 rounded-lg text-blue-600 border border-blue-100 text-[9px] font-black tracking-widest uppercase shadow-sm z-10"><i class="fa-solid fa-paper-plane mr-1"></i> ${n.target === 'All' ? 'সবাইকে' : n.target}</span>
                             
-                            <div class="relative z-10 pr-24 mb-3">
+                            <div class="relative z-10 pr-20 mb-3">
                                 <h4 class="font-black text-lg text-slate-800 leading-tight">${n.title}</h4>
                             </div>
                             
-                            <div class="text-xs text-slate-600 mb-5 bg-gradient-to-r from-slate-50 to-white p-4 rounded-xl border border-slate-100 cursor-pointer shadow-sm relative z-10" onclick="this.querySelector('p').classList.toggle('line-clamp-2');" title="Click to expand">
+                            <div class="text-xs text-slate-600 mb-5 bg-gradient-to-r from-slate-50 to-white p-4 rounded-xl border border-slate-100 cursor-pointer shadow-sm relative z-10 hover:shadow-md transition-shadow" onclick="this.querySelector('p').classList.toggle('line-clamp-2');" title="Click to expand">
                                 <p class="line-clamp-2 whitespace-pre-wrap leading-relaxed font-bold">${n.message}</p>
                             </div>
 
@@ -1467,7 +1342,7 @@
             document.getElementById('n-id').value = ''; 
             if (phone) {
                 document.getElementById('notif-target').value = 'custom'; 
-                document.getElementById('notif-custom-phone').value = phone;
+                document.getElementById('notif-custom-phone').value = formatPhone(phone);
                 document.getElementById('notif-phone-wrapper').classList.remove('hidden'); 
                 document.getElementById('notif-custom-phone').required = true; 
             } else {
@@ -1476,7 +1351,7 @@
                 document.getElementById('notif-custom-phone').required = false; 
             }
             document.getElementById('notif-modal-title').textContent="মেসেজ পাঠান"; 
-            document.getElementById('notif-submit-btn').textContent = "মেসেজ পাঠান"; 
+            document.getElementById('notif-submit-btn').innerHTML = "মেসেজ পাঠান <i class='fa-solid fa-paper-plane ml-2'></i>"; 
             document.getElementById('notif-modal').style.display='flex'; 
         }
 
@@ -1486,7 +1361,7 @@
             const n = adminNotifsList.find(x => x.id === id); if(!n) return;
             document.getElementById('n-id').value = n.id; document.getElementById('notif-title').value = n.title; document.getElementById('notif-message').value = n.message;
             if(n.target === 'All' || n.target === 'all') { document.getElementById('notif-target').value = 'All'; document.getElementById('notif-phone-wrapper').classList.add('hidden'); document.getElementById('notif-custom-phone').required = false; } else { document.getElementById('notif-target').value = 'custom'; document.getElementById('notif-custom-phone').value = n.target; document.getElementById('notif-phone-wrapper').classList.remove('hidden'); document.getElementById('notif-custom-phone').required = true;}
-            document.getElementById('notif-modal-title').textContent = "মেসেজ আপডেট করুন"; document.getElementById('notif-submit-btn').textContent = "মেসেজ আপডেট করুন"; document.getElementById('notif-modal').style.display='flex';
+            document.getElementById('notif-modal-title').textContent = "মেসেজ আপডেট করুন"; document.getElementById('notif-submit-btn').innerHTML = "আপডেট করুন <i class='fa-solid fa-check ml-2'></i>"; document.getElementById('notif-modal').style.display='flex';
         }
         async function saveNotification(e) {
             e.preventDefault(); const id = document.getElementById('n-id').value; const isEdit = id !== ''; const targetType = document.getElementById('notif-target').value;
@@ -1547,4 +1422,4 @@
         }
     </script>
 </body>
-    </html>
+</html>
